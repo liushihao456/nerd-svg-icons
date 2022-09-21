@@ -658,6 +658,7 @@ Icon is drawn using foreground and background of FACE."
     ("^TAGS$"                   "tag"             icon-tools-blue)
     ("^TODO$"                   "checklist"       icon-tools-lyellow)
     ("^LICENSE$"                "book"            icon-tools-blue)
+    ("^readme.md$"              "markdown"        icon-tools-lblue)
     ("^readme"                  "book"            icon-tools-lcyan)
     ("help"                     "info"            icon-tools-purple)
 
