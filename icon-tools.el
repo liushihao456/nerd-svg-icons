@@ -208,26 +208,14 @@ Icon is drawn using foreground and background of FACE."
        'display (icon-tools-svg-icon icon-name face))
     ""))
 
-(defun icon-tools-svg-icon-insert (icon-name &optional face)
-  (when (image-type-available-p 'svg)
-    (insert-image (icon-tools-svg-icon icon-name face))))
-
 (defun icon-tools-nerd-icon-str (icon-name &optional face)
   (propertize (or (cdr (assoc icon-name icon-tools-data-nerd-alist)) "")
               'face (or face 'default)))
-
-(defun icon-tools-nerd-icon-insert (icon-name &optional face)
-  (insert (icon-tools-nerd-icon-str icon-name face)))
 
 (defun icon-tools-icon-str (icon-name &optional face)
   (if (display-graphic-p)
       (icon-tools-svg-icon-str icon-name face)
     (icon-tools-nerd-icon-str icon-name face)))
-
-(defun icon-tools-icon-insert (icon-name &optional face)
-  (if (display-graphic-p)
-      (icon-tools-svg-icon-insert icon-name face)
-    (icon-tools-nerd-icon-insert icon-name face)))
 
 ;; Icon alists --------------------------------------------------------------- ;
 
@@ -671,6 +659,7 @@ Icon is drawn using foreground and background of FACE."
     ("^TODO$"                   "checklist"       icon-tools-lyellow)
     ("^LICENSE$"                "book"            icon-tools-blue)
     ("^readme"                  "book"            icon-tools-lcyan)
+    ("help"                     "info"            icon-tools-purple)
 
     ;; Config
     ("nginx$"                   "nginx"           icon-tools-dgreen)
@@ -745,13 +734,13 @@ Icon is drawn using foreground and background of FACE."
     ("^\\*scratch.*"            "sticky_note"     icon-tools-yellow)
     ("^\\*new-tab\\*$"          "star"            icon-tools-cyan)
 
-    ("^\\."                     "gear")
+    ("^\\."                     "gears")
     ))
 
 (defvar icon-tools-default-file-icon
   '("file" icon-tools-dsilver))
 
-(defvar icon-tools-dir-icon-alist
+(defvar icon-tools-dir-regexp-icon-alist
   '(
     ("trash"            "trash")
     ("dropbox"          "dropbox")
@@ -768,8 +757,10 @@ Icon is drawn using foreground and background of FACE."
     ("workspace"        "workspace")
     ("test"             "test-directory")
     ("\\.git"           "git")
-    (".?"               "file-directory")
     ))
+
+(defvar icon-tools-default-dir-icon
+  '("file-directory" icon-tools-dsilver))
 
 (defvar icon-tools-weather-icon-alist
   '(
@@ -813,7 +804,7 @@ Icon is drawn using foreground and background of FACE."
     (crystal-mode                       "crystal"           icon-tools-yellow)
     (erc-mode                           "commenting-o")
     (inferior-emacs-lisp-mode           "emacs"             icon-tools-lblue)
-    (dired-mode                         "folders")
+    (dired-mode                         "workspace")
     (lisp-interaction-mode              "lisp"              icon-tools-orange)
     (sly-mrepl-mode                     "common-lisp"       icon-tools-orange)
     (slime-repl-mode                    "common-lisp"       icon-tools-orange)
@@ -852,8 +843,8 @@ Icon is drawn using foreground and background of FACE."
     (paradox-menu-mode                  "archive"           icon-tools-silver)
     (Custom-mode                        "settings")
     (web-mode                           "webpack-old"       icon-tools-purple)
-    (fundamental-mode                   "file"              icon-tools-dsilver)
-    (special-mode                       "eye"               icon-tools-yellow)
+    (fundamental-mode                   "file-text"         icon-tools-dsilver)
+    (special-mode                       "info"              icon-tools-yellow)
     (text-mode                          "file-text"         icon-tools-cyan)
     (enh-ruby-mode                      "ruby"              icon-tools-lred)
     (ruby-mode                          "ruby"              icon-tools-lred)
@@ -963,6 +954,9 @@ Icon is drawn using foreground and background of FACE."
     (magik-cb-mode                      "book"              icon-tools-blue)
     ))
 
+(defvar icon-tools-default-mode-icon
+  '("file-directory" icon-tools-dsilver))
+
 ;; Function start ------------------------------------------------------------ ;
 
 (defun icon-tools--match-to-alist (file alist)
@@ -997,18 +991,25 @@ Note: You want chevron, please use `icon-tools-icon-for-dir-with-chevron'."
       (icon-tools-icon-str "repo" face1))
      (t
       (let* ((dir-name (file-name-base (directory-file-name dir)))
-             (match (icon-tools--match-to-alist dir-name
-                                                icon-tools-dir-icon-alist))
-             (icon-name (cadr match))
-             (face1 (or face (caddr match))))
+             (match (or (cdr (icon-tools--match-to-alist
+                              dir-name
+                              icon-tools-dir-regexp-icon-alist))
+                        icon-tools-default-dir-icon))
+             (icon-name (car match))
+             (face1 (or face (cadr match))))
         (icon-tools-icon-str icon-name face1))))))
 
 ;;;###autoload
+(defun icon-tools-icon-for-str (str &optional face)
+  "Get the formatted icon for STR with FACE, if provided."
+  (when-let ((match (icon-tools--match-to-alist
+                     str icon-tools-regexp-icon-alist)))
+    (icon-tools-icon-str
+     (cadr match) (or face (caddr match)))))
+
+;;;###autoload
 (defun icon-tools-icon-for-file (file &optional face)
-  "Get the formatted icon for FILE.
-ARG-OVERRIDES should be a plist containining `:height',
-`:v-adjust' or `:face' properties like in the normal icon
-inserting functions."
+  "Get the formatted icon for FILE with FACE, if provided."
   (let* ((ext (file-name-extension file))
          (match (or (cdr (icon-tools--match-to-alist
                           file icon-tools-regexp-icon-alist))
@@ -1019,6 +1020,22 @@ inserting functions."
          (icon-name (car match))
          (face1 (or face (cadr match))))
     (icon-tools-icon-str icon-name face1)))
+
+;;;###autoload
+(defun icon-tools-icon-for-mode (mode &optional face)
+  "Get the formatted icon for MODE with FACE, if provided.
+ARG-OVERRIDES should be a plist containining `:height',
+`:v-adjust' or `:face' properties like in the normal icon
+inserting functions."
+  (let* ((mode0 mode)
+         (match (assoc mode0 icon-tools-mode-icon-alist)))
+    (while (and mode0 (not match))
+      (setq mode0 (get mode 'derived-mode-parent))
+      (setq match (assoc mode0 icon-tools-mode-icon-alist)))
+    (if match
+        (icon-tools-icon-str
+         (cadr match) (or face (caddr match)))
+      (make-string icon-tools-icon-width ?\s))))
 
 (provide 'icon-tools)
 

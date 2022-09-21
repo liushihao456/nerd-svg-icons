@@ -1,9 +1,9 @@
 ;;; icon-tools-dired.el --- Dired theme with icon-tools  -*- lexical-binding: t; -*-
 
 ;; Author: Shihao Liu
-;; Keywords: treemacs svg icon
+;; Keywords: icon
 ;; Version: 1.0.0
-;; Package-Requires: ((emacs "24.3") (treemacs "2.9.5"))
+;; Package-Requires: ((emacs "24.3"))
 
 ;; This file is not part of GNU Emacs.
 ;;
@@ -25,7 +25,7 @@
 
 ;;; Commentary:
 ;;
-;; A treemacs theme with svg icons that look better with perfect alignment and
+;; A Dired theme with svg icons that look better with perfect alignment and
 ;; size.  It renders SVG icons in GUI and nerd icons in TUI.
 ;; --------------------------------------
 
@@ -61,7 +61,7 @@
     (mapc #'delete-overlay
           (icon-tools-dired--overlays-in (point-min) (point-max)))))
 
-(defun icon-tools-dired--refresh ()
+(defun icon-tools-dired--refresh (&rest _)
   "Display the icons of files in a Dired buffer."
   (icon-tools-dired--remove-all-overlays)
   (save-excursion
@@ -75,8 +75,8 @@
                           (icon-tools-icon-for-file file))))
               (if (member file '("." ".."))
                   (icon-tools-dired--add-overlay
-                   (point) (concat (make-string icon-tools-icon-width ?\s) "\t"))
-                (icon-tools-dired--add-overlay (point) (concat icon "\t")))))))
+                   (point) (concat (make-string icon-tools-icon-width ?\s) " "))
+                (icon-tools-dired--add-overlay (point) (concat icon " ")))))))
       (forward-line 1))))
 
 (defvar icon-tools-dired-mode)
@@ -84,18 +84,16 @@
 ;;;###autoload
 (define-minor-mode icon-tools-dired-mode
   "Display icon-tools icon for each files in a Dired buffer."
-  :lighter " icon-tools-dired-mode"
-  (when (and (derived-mode-p 'dired-mode))
+  :global nil
+  (when (derived-mode-p 'dired-mode)
     (if icon-tools-dired-mode
         (progn
-          (setq-local tab-width 1)
           (advice-add #'dired-readin :after #'icon-tools-dired--refresh)
           (advice-add #'dired-revert :after #'icon-tools-dired--refresh)
           (advice-add #'dired-internal-do-deletions :after #'icon-tools-dired--refresh)
           (advice-add #'dired-insert-subdir :after #'icon-tools-dired--refresh)
           (advice-add #'dired-do-kill-lines :after #'icon-tools-dired--refresh)
           (icon-tools-dired--refresh))
-      (kill-local-variable 'tab-width)
       (advice-remove #'dired-readin #'icon-tools-dired--refresh)
       (advice-remove #'dired-revert #'icon-tools-dired--refresh)
       (advice-remove #'dired-internal-do-deletions #'icon-tools-dired--refresh)
