@@ -266,6 +266,13 @@
     ("collections_bookmark"    . " ")
     ("bookmarks"               . " ")
     ("color"                   . " ")
+    ("command"                 . " ")
+    ("macro"                   . " ")
+    ("function"                . " ")
+    ("wrench"                  . " ")
+    ("variable"                . " ")
+    ("variable-local"          . " ")
+    ("symbol"                  . " ")
     ))
 
 (provide 'icon-tools-data-nerd)

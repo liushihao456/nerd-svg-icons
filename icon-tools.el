@@ -115,6 +115,7 @@ If COLOR-NAME is unknown to Emacs, then return COLOR-NAME as-is."
     ("file-zip" . 0.9)
     ("film" . 0.8)
     ("closed_caption" . 0.95)
+    ("variable-local" . 1.1)
     ("repo" . 1.1)))
 
 (defvar icon-tools-svg-icon-default-scale 0.85)
