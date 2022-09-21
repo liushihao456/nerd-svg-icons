@@ -1,20 +1,29 @@
 # Icon-tools for Emacs
+## GUI Emacs:
 ![Screenshot](./screenshot.png)
 
-Icon-tools makes inserting icons in Emacs graceful and painless. It uses SVG icons in GUI Emacs and [Nerd font](https://www.nerdfonts.com/) icons in TUI Emacs.
+## Terminal Emacs:
+![Screenshot](./screenshot-terminal.png)
+
+Icon-tools makes inserting icons in Emacs graceful and painless. It uses SVG icons in GUI Emacs and [Nerd font](https://www.nerdfonts.com/) icons in Terminal Emacs.
 
 It is partially meant as an alternative to [`all-the-icons`](https://github.com/domtronn/all-the-icons.el) to provide better looking and experience.
 
 ## Main features
 
 1. Perfect alignment. The SVG icons are perfectly aligned both horizontally and vertically.
-2. Supports both GUI and TUI Emacs.
+2. Supports both GUI and Terminal Emacs.
 3. (Additionally) provides icon support for several use cases, including [`Treemacs`](https://github.com/Alexander-Miller/treemacs), `Dired`, and minibuffer completion.
 4. Caching implementation. The SVG icons are cached so as to save memory and speed up performance.
 
-## Getting started
+## Prerequisites
 
-This package is not in Melpa, therefore manual installation is needed.
+1. In order for icons to show up properly in terminal Emacs, the font under use must be Nerd-patched (checkout [Nerd font website](https://www.nerdfonts.com/)).
+2. In order for icons to show up properly in GUI Emacs, Emacs must be built with SVG support, which can be checked with
+   
+   ``` elisp
+   (image-type-available-p 'svg)
+   ```
 
 First, clone the repo:
 

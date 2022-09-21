@@ -251,7 +251,7 @@
     ("wand-magic-sparkles"     . " ")
     ("webpack"                 . "ﰩ ")
     ("webpack-old"             . "ﰩ ")
-    ("workspace"               . " ")
+    ("workspace"               . "𧻓")
     ("yarn"                    . " ")
     ("zig"                     . " ")
     ("apache"                  . " ")

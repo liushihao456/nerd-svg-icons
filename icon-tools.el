@@ -735,6 +735,8 @@ Icon is drawn using foreground and background of FACE."
     ("^\\*scratch.*"            "sticky_note"     icon-tools-yellow)
     ("^\\*new-tab\\*$"          "star"            icon-tools-cyan)
 
+    ("\\.git"                   "git"             icon-tools-yellow)
+
     ("^\\."                     "gears")
     ))
 
