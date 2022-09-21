@@ -59,30 +59,26 @@
 
       ;; folder
       (treemacs-create-icon
-       :icon (format "%s%s%s\t"
-                     indent-str
+       :icon (format "%s%s\t"
                      (icon-tools-icon-str "chevron-down" 'font-lock-doc-face)
                      (icon-tools-icon-str "file-directory" 'font-lock-doc-face))
        :fallback 'same-as-icon
        :extensions (dir-open))
       (treemacs-create-icon
-       :icon (format "%s%s%s\t"
-                     indent-str
+       :icon (format "%s%s\t"
                      (icon-tools-icon-str "chevron-right" 'font-lock-doc-face)
                      (icon-tools-icon-str "file-directory" 'font-lock-doc-face))
        :fallback 'same-as-icon
        :extensions (dir-closed))
 
       (treemacs-create-icon
-       :icon (format "%s%s%s\t"
-                     indent-str
+       :icon (format "%s%s\t"
                      (icon-tools-icon-str "chevron-down" 'font-lock-function-name-face)
                      (icon-tools-icon-str "package" 'font-lock-function-name-face))
        :fallback 'same-as-icon
        :extensions (tag-open))
       (treemacs-create-icon
-       :icon (format "%s%s%s\t"
-                     indent-str
+       :icon (format "%s%s\t"
                      (icon-tools-icon-str "chevron-right" 'font-lock-function-name-face)
                      (icon-tools-icon-str "package" 'font-lock-function-name-face))
        :fallback 'same-as-icon
