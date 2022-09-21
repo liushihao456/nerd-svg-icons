@@ -2,7 +2,7 @@
 ## GUI Emacs:
 ![Screenshot](./screenshot.png)
 
-## Terminal Emacs:
+## Terminal Emacs (on macOS Terminal.app):
 ![Screenshot](./screenshot-terminal.png)
 
 Icon-tools makes inserting icons in Emacs graceful and painless. It uses SVG icons in GUI Emacs and [Nerd font](https://www.nerdfonts.com/) icons in Terminal Emacs.

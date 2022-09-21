@@ -265,6 +265,7 @@
     ("visualstudio"            . "﬏ ")
     ("collections_bookmark"    . " ")
     ("bookmarks"               . " ")
+    ("color"                   . " ")
     ))
 
 (provide 'icon-tools-data-nerd)

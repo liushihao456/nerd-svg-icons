@@ -51,6 +51,7 @@
     (file (icon-tools-completion-get-file-icon cand))
     (project-file (icon-tools-completion-get-file-icon cand))
     (buffer (icon-tools-completion-get-buffer-icon cand))
+    (face (icon-tools-completion-get-face-icon cand))
     (t "")))
 
 (defun icon-tools-completion-get-file-icon (cand)
@@ -67,6 +68,12 @@
    (or
     (icon-tools-icon-for-str cand)
     (icon-tools-icon-for-mode (buffer-local-value 'major-mode (get-buffer cand))))
+   (make-string icon-tools-completion-icon-right-padding ?\s)))
+
+(defun icon-tools-completion-get-face-icon (cand)
+  "Return the icon for the candidate CAND of completion category face."
+  (concat
+   (icon-tools-icon-str "color" (if (stringp cand) (intern cand) cand))
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-completion-metadata-get (orig metadata prop)

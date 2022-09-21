@@ -144,9 +144,6 @@ Icon is drawn using foreground and background of FACE."
         cache-item
       (let* ((root (icon-tools-svg-icon-parse icon-name))
 
-             (fg-color (icon-tools--svg-icon-get-face-attribute-deep face :foreground))
-             (bg-color (icon-tools--svg-icon-get-face-attribute-deep face :background))
-
              ;; Read original viewbox
              (viewbox-str (cdr (assq 'viewBox (xml-node-attributes (car root)))))
              (viewbox (when viewbox-str (mapcar 'string-to-number (split-string viewbox-str))))
@@ -175,16 +172,20 @@ Icon is drawn using foreground and background of FACE."
              (svg-viewbox (format "%f %f %f %f" view-x view-y view-width view-height))
 
              ;; Foreground and background
+             (fg-color (icon-tools--svg-icon-get-face-attribute-deep face :foreground))
              (fg-color (icon-tools--svg-icon-emacs-color-to-svg-color
                         (or (when (facep fg-color)
                               (face-foreground fg-color nil t))
                             (when (not (eq fg-color 'unspecified)) fg-color)
                             (face-attribute 'default :foreground))))
-             (bg-color (icon-tools--svg-icon-emacs-color-to-svg-color
-                        (or (when (facep bg-color)
-                              (face-background bg-color nil t))
-                            (when (not (eq bg-color 'unspecified)) bg-color)
-                            "transparent")))
+             ;; Use only transparent background for now
+             (bg-color "transparent")
+             ;; (bg-color (icon-tools--svg-icon-get-face-attribute-deep face :background))
+             ;; (bg-color (icon-tools--svg-icon-emacs-color-to-svg-color
+             ;;            (or (when (facep bg-color)
+             ;;                  (face-background bg-color nil t))
+             ;;                (when (not (eq bg-color 'unspecified)) bg-color)
+             ;;                "transparent")))
 
              (svg (svg-create svg-width svg-height
                               :viewBox svg-viewbox
@@ -210,7 +211,7 @@ Icon is drawn using foreground and background of FACE."
 
 (defun icon-tools-nerd-icon-str (icon-name &optional face)
   (propertize (or (cdr (assoc icon-name icon-tools-data-nerd-alist)) "")
-              'face (or face 'default)))
+              'face `(:foreground ,(face-attribute (or face 'default) :foreground))))
 
 (defun icon-tools-icon-str (icon-name &optional face)
   (if (display-graphic-p)
@@ -468,7 +469,7 @@ Icon is drawn using foreground and background of FACE."
     ("fs"                   "fsharp"                icon-tools-blue-alt)
     ("fsi"                  "fsharp"                icon-tools-blue-alt)
     ("fsx"                  "fsharp"                icon-tools-blue-alt)
-    ("fsscript"             "fsharp"               con-tools-blue-alt)
+    ("fsscript"             "fsharp"                icon-tools-blue-alt)
     ;; zig
     ("zig"                  "zig"                   icon-tools-orange)
     ;; odin
@@ -661,6 +662,7 @@ Icon is drawn using foreground and background of FACE."
     ("^readme.md$"              "markdown"        icon-tools-lblue)
     ("^readme"                  "book"            icon-tools-lcyan)
     ("help"                     "info"            icon-tools-purple)
+    ("info"                     "info"            icon-tools-pink)
 
     ;; Config
     ("nginx$"                   "nginx"           icon-tools-dgreen)
@@ -833,6 +835,7 @@ Icon is drawn using foreground and background of FACE."
     (ibuffer-mode                       "files"             icon-tools-dsilver)
     (messages-buffer-mode               "message"           icon-tools-dsilver)
     (help-mode                          "info"              icon-tools-purple)
+    (Info-mode                          "info"              icon-tools-pink)
     (benchmark-init/tree-mode           "dashboard")
     (jenkins-mode                       "jenkins"           icon-tools-blue)
     (magit-popup-mode                   "git"               icon-tools-red)
