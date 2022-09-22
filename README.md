@@ -14,16 +14,18 @@ It is partially meant as an alternative to [`all-the-icons`](https://github.com/
 1. Perfect alignment. The SVG icons are perfectly aligned both horizontally and vertically.
 2. Supports both GUI and Terminal Emacs.
 3. (Additionally) provides icon support for several use cases, including [`Treemacs`](https://github.com/Alexander-Miller/treemacs), `Dired`, and minibuffer completion.
-4. Caching implementation. The SVG icons are cached so as to save memory and speed up performance.
+4. Caching mechanism. The SVG icons are cached so as to save memory and speed up performance.
 
 ## Prerequisites
 
-1. In order for icons to show up properly in terminal Emacs, the font under use must be Nerd-patched (checkout [Nerd font website](https://www.nerdfonts.com/)).
-2. In order for icons to show up properly in GUI Emacs, Emacs must be built with SVG support, which can be checked with
+1. In order display icons properly in terminal Emacs, Nerd-patch font is required (checkout [Nerd font website](https://www.nerdfonts.com/)).
+2. In order display icons properly in GUI Emacs, Emacs SVG support is required, which can be checked with
    
    ``` elisp
    (image-type-available-p 'svg)
    ```
+   
+## Getting started
 
 First, clone the repo:
 
@@ -31,7 +33,7 @@ First, clone the repo:
 git clone --depth=1 https://github.com/liushihao456/icon-tools.git
 ```
 
-Then add `icon-tools` to load-path:
+Then load it:
 
 ``` elisp
 (add-to-list 'load-path "/path/to/icon-tools/")
