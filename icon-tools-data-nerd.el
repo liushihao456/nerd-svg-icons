@@ -273,6 +273,9 @@
     ("variable"                . " ")
     ("variable-local"          . " ")
     ("symbol"                  . " ")
+    ("error"                   . " ")
+    ("ban"                     . " ")
+    ("warning"                 . " ")
     ))
 
 (provide 'icon-tools-data-nerd)

@@ -24,7 +24,7 @@ It is partially meant as an alternative to [`all-the-icons`](https://github.com/
    ``` elisp
    (image-type-available-p 'svg)
    ```
-   
+
 ## Getting started
 
 First, clone the repo:
