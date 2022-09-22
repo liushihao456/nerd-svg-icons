@@ -52,11 +52,13 @@
   (make-hash-table :test 'equal :size 250))
 
 (defun icon-tools-svg-icon-cache-add (icon icon-name &optional face)
-  (puthash (concat icon-name "-" (symbol-name (or face 'default)))
+  (puthash (format "%s-%s-%d-%d" icon-name (symbol-name (or face 'default))
+                   (window-font-width) (window-font-height))
            icon icon-tools-svg-icon-cache))
 
 (defun icon-tools-svg-icon-cache-get (icon-name &optional face)
-  (gethash (concat icon-name "-" (symbol-name (or face 'default)))
+  (gethash (format "%s-%s-%d-%d" icon-name (symbol-name (or face 'default))
+                   (window-font-width) (window-font-height))
            icon-tools-svg-icon-cache))
 
 (defun icon-tools-svg-icon-filepath (icon-name)
@@ -97,34 +99,34 @@ If COLOR-NAME is unknown to Emacs, then return COLOR-NAME as-is."
             (icon-tools--svg-icon-recursively-copy-children node1-child child fg-color)))))))
 
 (defvar icon-tools-svg-icon-scale-alist
-  '(("tag" . 0.7)
-    ("key" . 0.7)
-    ("tools" . 0.75)
-    ("tex" . 1.0)
-    ("java" . 1.0)
-    ("database" . 0.8)
-    ("file-directory" . 0.9)
-    ("emacs" . 0.9)
-    ("file" . 0.97)
-    ("file-media" . 0.83)
-    ("file-pdf" . 0.87)
-    ("file-binary" . 0.95)
-    ("file-xls" . 0.9)
-    ("file-doc" . 0.9)
-    ("file-ppt" . 0.9)
-    ("file-zip" . 0.9)
-    ("film" . 0.8)
-    ("closed_caption" . 0.95)
-    ("variable-local" . 1.1)
+  '(("tag" . 0.8)
+    ("key" . 0.8)
+    ("tools" . 0.85)
+    ("tex" . 1.2)
+    ("java" . 1.2)
+    ("database" . 0.9)
+    ("file-directory" . 1.05)
+    ("emacs" . 1.05)
+    ("file" . 1.1)
+    ;; ("file-media" . 1.05)
+    ;; ("file-pdf" . 1.05)
+    ;; ("file-binary" . 1.05)
+    ("file-xls" . 1.05)
+    ("file-doc" . 1.05)
+    ("file-ppt" . 1.05)
+    ("file-zip" . 1.05)
+    ("film" . 0.9)
+    ("closed_caption" . 1.15)
+    ("variable-local" . 1.05)
     ("repo" . 1.1)))
 
-(defvar icon-tools-svg-icon-default-scale 0.85)
+(defvar icon-tools-svg-icon-base-scale 0.9)
 
 (defun icon-tools--svg-icon-get-viewbox-multiplier (icon-name)
   (let ((cell (assoc icon-name icon-tools-svg-icon-scale-alist)))
     (if cell
-        (/ 1 (cdr cell))
-      (/ 1 icon-tools-svg-icon-default-scale))))
+        (/ 1 (* (cdr cell) icon-tools-svg-icon-base-scale))
+      (/ 1 icon-tools-svg-icon-base-scale))))
 
 (defun icon-tools--svg-icon-get-face-attribute-deep (face attribute)
   (when (facep face)
@@ -135,13 +137,16 @@ If COLOR-NAME is unknown to Emacs, then return COLOR-NAME as-is."
         (setq face0 (face-attribute face0 :inherit)))
       val)))
 
-(defun icon-tools-svg-icon (icon-name &optional face)
+(defun icon-tools-svg-icon (icon-name &optional face scale)
   "Build the icon ICON-NAME.
 
-Icon is drawn using foreground and background of FACE."
+Icon is drawn with the foreground of FACE.
+
+The third argument SCALE, if provided, scales the icon."
 
   (let ((cache-item (icon-tools-svg-icon-cache-get icon-name face)))
-    (if cache-item
+    ;; (if cache-item
+    (if nil
         cache-item
       (let* ((root (icon-tools-svg-icon-parse icon-name))
 
@@ -158,11 +163,22 @@ Icon is drawn using foreground and background of FACE."
                             (string-to-number (cdr (assq 'height (xml-node-attributes (car root)))))))
 
              ;; Set icon size (in pixels) to `icon-tools-icon-width'x1 characters
-             (svg-width  (* (window-font-width)  icon-tools-icon-width))
-             (svg-height (* (window-font-height) 1))
+             (svg-width  (* (window-font-width) icon-tools-icon-width))
+
+             ;; Use 2 * (`window-font-width') instead, because on Windows, if
+             ;; `window-font-height' returns value larger than 2 *
+             ;; (`window-font-width'), the icon's height will actually be higher
+             ;; than the original line height (which seems to be 2 *
+             ;; (`window-font-width') no matter what `window-font-height'
+             ;; returns).
+             ;; ;; (svg-height (window-font-height)
+             (svg-height (* (window-font-width) 2))
 
              ;; Scale
-             (multiplier (icon-tools--svg-icon-get-viewbox-multiplier icon-name))
+             (multiplier (if scale
+                             (* (/ 1 scale)
+                                (icon-tools--svg-icon-get-viewbox-multiplier icon-name))
+                           (icon-tools--svg-icon-get-viewbox-multiplier icon-name)))
              (d-view-width (* (- multiplier 1) view-width))
              (view-x (- view-x (/ d-view-width 2)))
              (view-width (+ view-width d-view-width))
@@ -203,20 +219,20 @@ Icon is drawn using foreground and background of FACE."
         (icon-tools-svg-icon-cache-add (svg-image svg :ascent 'center :scale 1)
                                        icon-name face)))))
 
-(defun icon-tools-svg-icon-str (icon-name &optional face)
+(defun icon-tools-svg-icon-str (icon-name &optional face scale)
   (if (image-type-available-p 'svg)
       (propertize
        (make-string icon-tools-icon-width ?\-)
-       'display (icon-tools-svg-icon icon-name face))
+       'display (icon-tools-svg-icon icon-name face scale))
     ""))
 
 (defun icon-tools-nerd-icon-str (icon-name &optional face)
   (propertize (or (cdr (assoc icon-name icon-tools-data-nerd-alist)) "")
               'face `(:foreground ,(face-attribute (or face 'default) :foreground))))
 
-(defun icon-tools-icon-str (icon-name &optional face)
+(defun icon-tools-icon-str (icon-name &optional face scale)
   (if (display-graphic-p)
-      (icon-tools-svg-icon-str icon-name face)
+      (icon-tools-svg-icon-str icon-name face scale)
     (icon-tools-nerd-icon-str icon-name face)))
 
 ;; Icon alists --------------------------------------------------------------- ;

@@ -49,11 +49,11 @@
                        'display (make-string icon-tools-icon-width ?\s))))
       ;; repo
       (treemacs-create-icon
-       :icon (format "%s\t" (icon-tools-icon-str "repo" 'treemacs-term-node-face))
+       :icon (format "%s\t" (icon-tools-icon-str "repo" 'treemacs-term-node-face 1.3))
        :fallback 'same-as-icon
        :extensions (root-open))
       (treemacs-create-icon
-       :icon (format "%s\t" (icon-tools-icon-str "repo" 'treemacs-term-node-face))
+       :icon (format "%s\t" (icon-tools-icon-str "repo" 'treemacs-term-node-face 1.3))
        :fallback 'same-as-icon
        :extensions (root-closed))
 
