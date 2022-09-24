@@ -55,6 +55,7 @@
     (face (icon-tools-completion-get-face-icon cand))
     (bookmark (icon-tools-completion-get-bookmark-icon cand))
     (symbol (icon-tools-completion-get-symbol-icon cand))
+    (function (icon-tools-completion-get-symbol-icon cand))
     (variable (icon-tools-completion-get-variable-icon cand))
     (imenu (icon-tools-completion-get-imenu-icon cand))
     (library (icon-tools-completion-get-package-icon cand))
