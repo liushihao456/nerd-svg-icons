@@ -589,7 +589,7 @@ The third argument SCALE, if provided, scales the icon."
     ("ninja"                "ninja")
     ("makefile"             "file-text"             icon-tools-cyan)
     ("dockerignore"         "docker"                icon-tools-dblue)
-    ("xml"                  "file-code"             icon-tools-lorange)
+    ("xml"                  "code"                  icon-tools-lorange)
     ("json"                 "settings"              icon-tools-yellow)
     ("clang-format"         "settings"              icon-tools-yellow)
     ("cson"                 "cogs"                  icon-tools-yellow)
