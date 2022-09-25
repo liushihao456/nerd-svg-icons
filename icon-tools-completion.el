@@ -36,6 +36,7 @@
 
 ;;; Code:
 (require 'icon-tools)
+(require 'bookmark)
 
 (defgroup all-the-icons-completion nil
   "Add icons to completion candidates."
@@ -67,11 +68,13 @@
 
 (defun icon-tools-completion-get-file-icon (cand)
   "Return the icon for the candidate CAND of completion category file."
-  (cond ((string-match-p "\\/$" cand)
-         (concat (icon-tools-icon-for-dir cand)
-                 (make-string icon-tools-completion-icon-right-padding ?\s)))
-        (t (concat (icon-tools-icon-for-file cand)
-                   (make-string icon-tools-completion-icon-right-padding ?\s)))))
+  (concat
+   (cond ((string-match-p "\\/$" cand)
+          (icon-tools-icon-for-dir cand))
+         (t (or
+             (icon-tools-icon-for-file cand)
+             (make-string icon-tools-icon-width ?\s))))
+   (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-command-icon (cand)
   "Return the icon for the candidate CAND of completion category command."
@@ -84,7 +87,8 @@
   (concat
    (or
     (icon-tools-icon-for-str cand)
-    (icon-tools-icon-for-mode (buffer-local-value 'major-mode (get-buffer cand))))
+    (icon-tools-icon-for-mode (buffer-local-value 'major-mode (get-buffer cand)))
+    (icon-tools-icon-str "buffer" 'icon-tools-purple))
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-face-icon (cand)
@@ -95,8 +99,9 @@
 
 (defun icon-tools-completion-get-bookmark-icon (cand)
   "Return the icon for the candidate CAND of completion category bookmark."
-  (when-let ((bm (assoc cand (bound-and-true-p bookmark-alist))))
-    (icon-tools-completion-get-file-icon (bookmark-get-filename bm))))
+  (if-let ((bm (assoc cand (bound-and-true-p bookmark-alist))))
+      (icon-tools-completion-get-file-icon (bookmark-get-filename bm))
+    (icon-tools-icon-str "bookmark" 'icon-tools-orange)))
 
 (defun icon-tools-completion-get-symbol-icon (cand)
   "Return the icon for the candidate CAND of completion category symbol."
@@ -153,13 +158,13 @@
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-customize-group-icon (cand)
-  "Return the icon for the candidate CAND of completion category customize-group."
+  "Return the icon for the candidate CAND of completion category `customize-group'."
   (concat
    (icon-tools-icon-str "wrench" 'icon-tools-orange)
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-minor-mode-icon (cand)
-  "Return the icon for the candidate CAND of completion category minor-mode"
+  "Return the icon for the candidate CAND of completion category minor-mode."
   (concat
    (icon-tools-icon-str "gear" 'icon-tools-dcyan)
    (make-string icon-tools-completion-icon-right-padding ?\s)))
