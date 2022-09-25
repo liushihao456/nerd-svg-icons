@@ -1053,7 +1053,7 @@ inserting functions."
   (let* ((mode0 mode)
          (match (assoc mode0 icon-tools-mode-icon-alist)))
     (while (and mode0 (not match))
-      (setq mode0 (get mode 'derived-mode-parent))
+      (setq mode0 (get mode0 'derived-mode-parent))
       (setq match (assoc mode0 icon-tools-mode-icon-alist)))
     (if match
         (icon-tools-icon-str
