@@ -59,6 +59,7 @@
     (function (icon-tools-completion-get-symbol-icon cand))
     (variable (icon-tools-completion-get-variable-icon cand))
     (imenu (icon-tools-completion-get-imenu-icon cand))
+    (etags (icon-tools-completion-get-imenu-icon cand))
     (library (icon-tools-completion-get-package-icon cand))
     (package (icon-tools-completion-get-package-icon cand))
     (embark-keybinding (icon-tools-completion-get-embark-keybinding-icon cand))
