@@ -88,8 +88,7 @@
   (concat
    (or
     (icon-tools-icon-for-str cand)
-    (icon-tools-icon-for-mode (buffer-local-value 'major-mode (get-buffer cand)))
-    (icon-tools-icon-str "buffer" 'icon-tools-purple))
+    (icon-tools-icon-for-mode (buffer-local-value 'major-mode (get-buffer cand))))
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-face-icon (cand)

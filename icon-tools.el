@@ -845,6 +845,7 @@ The third argument SCALE, if provided, scales the icon."
     (magit-process-mode                 "mark-github")
     (magit-diff-mode                    "git-compare"       icon-tools-lblue)
     (ediff-mode                         "git-compare"       icon-tools-red)
+    (diff-mode                          "git-compare"       icon-tools-purple)
     (comint-mode                        "terminal"          icon-tools-lblue)
     (eww-mode                           "firefox"           icon-tools-red)
     (org-agenda-mode                    "checklist"         icon-tools-lgreen)
@@ -1058,7 +1059,7 @@ inserting functions."
     (if match
         (icon-tools-icon-str
          (cadr match) (or face (caddr match)))
-      (make-string icon-tools-icon-width ?\s))))
+      (icon-tools-icon-str "buffer" (or face 'icon-tools-purple)))))
 
 (provide 'icon-tools)
 
