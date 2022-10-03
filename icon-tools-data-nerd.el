@@ -231,7 +231,7 @@
     ("tcl"                     . " ")
     ("terminal"                . " ")
     ("terraform"               . " ")
-    ("test-directory"          . "ﭧ ")
+    ("test-directory"          . " ")
     ("test-js"                 . " ")
     ("test-react"              . "ﰆ ")
     ("test-ruby"               . " ")
