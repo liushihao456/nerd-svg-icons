@@ -277,6 +277,7 @@
     ("ban"                     . " ")
     ("warning"                 . " ")
     ("buffer"                  . "﬘ ")
+    ("check"                   . " ")
     ))
 
 (provide 'icon-tools-data-nerd)
