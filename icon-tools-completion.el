@@ -46,26 +46,28 @@
 (defvar icon-tools-completion-icon-right-padding 1
   "Padding added to the right of completion icons.")
 
+(defvar icon-tools-completion-category-icon-alist
+  '((file . icon-tools-completion-get-file-icon)
+    (command . icon-tools-completion-get-command-icon)
+    (project-file . icon-tools-completion-get-file-icon)
+    (buffer . icon-tools-completion-get-buffer-icon)
+    (face . icon-tools-completion-get-face-icon)
+    (bookmark . icon-tools-completion-get-bookmark-icon)
+    (symbol . icon-tools-completion-get-symbol-icon)
+    (function . icon-tools-completion-get-symbol-icon)
+    (variable . icon-tools-completion-get-variable-icon)
+    (imenu . icon-tools-completion-get-imenu-icon)
+    (library . icon-tools-completion-get-package-icon)
+    (package . icon-tools-completion-get-package-icon)
+    (embark-keybinding . icon-tools-completion-get-embark-keybinding-icon)
+    (customize-group . icon-tools-completion-get-customize-group-icon)
+    (minor-mode . icon-tools-completion-get-minor-mode-icon)))
+
 (defun icon-tools-completion-get-icon (cand cat)
   "Return the icon for the candidate CAND of completion category CAT."
-  (cl-case cat
-    (file (icon-tools-completion-get-file-icon cand))
-    (command (icon-tools-completion-get-command-icon cand))
-    (project-file (icon-tools-completion-get-file-icon cand))
-    (buffer (icon-tools-completion-get-buffer-icon cand))
-    (face (icon-tools-completion-get-face-icon cand))
-    (bookmark (icon-tools-completion-get-bookmark-icon cand))
-    (symbol (icon-tools-completion-get-symbol-icon cand))
-    (function (icon-tools-completion-get-symbol-icon cand))
-    (variable (icon-tools-completion-get-variable-icon cand))
-    (imenu (icon-tools-completion-get-imenu-icon cand))
-    (etags (icon-tools-completion-get-imenu-icon cand))
-    (library (icon-tools-completion-get-package-icon cand))
-    (package (icon-tools-completion-get-package-icon cand))
-    (embark-keybinding (icon-tools-completion-get-embark-keybinding-icon cand))
-    (customize-group (icon-tools-completion-get-customize-group-icon cand))
-    (minor-mode (icon-tools-completion-get-minor-mode-icon cand))
-    (t "")))
+  (if-let (fun (alist-get cat icon-tools-completion-category-icon-alist))
+      (funcall fun cand)
+    ""))
 
 (defun icon-tools-completion-get-file-icon (cand)
   "Return the icon for the candidate CAND of completion category file."

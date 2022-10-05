@@ -1,9 +1,9 @@
 ;;; icon-tools.el --- Tools for icons in Emacs  -*- lexical-binding: t; -*-
 
 ;; Author: Shihao Liu
-;; Keywords: treemacs nerd icon
+;; Keywords: icon svg nerd
 ;; Version: 1.0.0
-;; Package-Requires: ((emacs "24.3") (treemacs "2.9.5"))
+;; Package-Requires: ((emacs "24.3"))
 
 ;; This file is not part of GNU Emacs.
 ;;

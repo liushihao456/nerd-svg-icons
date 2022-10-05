@@ -1,7 +1,7 @@
 ;;; icon-tools-treemacs-icons.el --- Treemacs theme with icon-tools  -*- lexical-binding: t; -*-
 
 ;; Author: Shihao Liu
-;; Keywords: treemacs svg icon
+;; Keywords: treemacs icon
 ;; Version: 1.0.0
 ;; Package-Requires: ((emacs "24.3") (treemacs "2.9.5"))
 

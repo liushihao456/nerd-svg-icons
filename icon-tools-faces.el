@@ -1,12 +1,9 @@
 ;;; icon-tools-faces.el --- A module of faces for icon-tools
 
-;; Copyright (C) 2016  Dominic Charlesworth <dgc336@gmail.com>
-
-;; Author: Dominic Charlesworth <dgc336@gmail.com>
+;; Author: Shihao Liu
+;; Keywords: icon
 ;; Version: 1.0.0
 ;; Package-Requires: ((emacs "24.3"))
-;; URL: https://github.com/domtronn/icon-tools.el
-;; Keywords: convenient, lisp
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License
