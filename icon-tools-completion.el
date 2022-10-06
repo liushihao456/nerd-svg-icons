@@ -82,7 +82,7 @@
 (defun icon-tools-completion-get-command-icon (cand)
   "Return the icon for the candidate CAND of completion category command."
   (concat
-   (icon-tools-icon-str "command" 'icon-tools-purple)
+   (icon-tools-icon-str "command" :face 'icon-tools-purple)
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-buffer-icon (cand)
@@ -96,14 +96,14 @@
 (defun icon-tools-completion-get-face-icon (cand)
   "Return the icon for the candidate CAND of completion category face."
   (concat
-   (icon-tools-icon-str "color" (intern-soft cand))
+   (icon-tools-icon-str "color" :face (intern-soft cand))
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-bookmark-icon (cand)
   "Return the icon for the candidate CAND of completion category bookmark."
   (if-let ((bm (assoc cand (bound-and-true-p bookmark-alist))))
       (icon-tools-completion-get-file-icon (bookmark-get-filename bm))
-    (icon-tools-icon-str "bookmark" 'icon-tools-orange)))
+    (icon-tools-icon-str "bookmark" :face 'icon-tools-orange)))
 
 (defun icon-tools-completion-get-symbol-icon (cand)
   "Return the icon for the candidate CAND of completion category symbol."
@@ -111,21 +111,21 @@
     (concat
      (cond
       ((commandp s)
-       (icon-tools-icon-str "command" 'icon-tools-purple))
+       (icon-tools-icon-str "command" :face 'icon-tools-purple))
       ((macrop (symbol-function s))
-       (icon-tools-icon-str "macro" 'icon-tools-purple))
+       (icon-tools-icon-str "macro" :face 'icon-tools-purple))
       ((fboundp s)
-       (icon-tools-icon-str "function" 'icon-tools-cyan))
+       (icon-tools-icon-str "function" :face 'icon-tools-cyan))
       ((facep s)
-       (icon-tools-icon-str "color" s))
+       (icon-tools-icon-str "color" :face s))
       ((and (boundp s) (custom-variable-p s))
-       (icon-tools-icon-str "wrench" 'icon-tools-orange))
+       (icon-tools-icon-str "wrench" :face 'icon-tools-orange))
       ((and (boundp s) (local-variable-if-set-p s))
-       (icon-tools-icon-str "variable-local" 'icon-tools-blue))
+       (icon-tools-icon-str "variable-local" :face 'icon-tools-blue))
       ((boundp s)
-       (icon-tools-icon-str "variable" 'icon-tools-blue))
+       (icon-tools-icon-str "variable" :face 'icon-tools-blue))
       (t
-       (icon-tools-icon-str "symbol" 'icon-tools-pink)))
+       (icon-tools-icon-str "symbol" :face 'icon-tools-pink)))
      (make-string icon-tools-completion-icon-right-padding ?\s))))
 
 (defun icon-tools-completion-get-variable-icon (cand)
@@ -134,41 +134,41 @@
     (concat
      (cond
       ((and (boundp s) (custom-variable-p s))
-       (icon-tools-icon-str "wrench" 'icon-tools-orange))
+       (icon-tools-icon-str "wrench" :face 'icon-tools-orange))
       ((and (boundp s) (local-variable-if-set-p s))
-       (icon-tools-icon-str "variable-local" 'icon-tools-blue))
+       (icon-tools-icon-str "variable-local" :face 'icon-tools-blue))
       (t
-       (icon-tools-icon-str "variable" 'icon-tools-blue)))
+       (icon-tools-icon-str "variable" :face 'icon-tools-blue)))
      (make-string icon-tools-completion-icon-right-padding ?\s))))
 
 (defun icon-tools-completion-get-imenu-icon (cand)
   "Return the icon for the candidate CAND of completion category imenu."
   (concat
-   (icon-tools-icon-str "tag" 'icon-tools-lpurple)
+   (icon-tools-icon-str "tag" :face 'icon-tools-lpurple)
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-package-icon (cand)
   "Return the icon for the candidate CAND of completion category package."
   (concat
-   (icon-tools-icon-str "package" 'icon-tools-lpurple)
+   (icon-tools-icon-str "package" :face 'icon-tools-lpurple)
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-embark-keybinding-icon (cand)
   "Return the icon for the candidate CAND of completion category embark-keybinding."
   (concat
-   (icon-tools-icon-str "key" 'icon-tools-cyan)
+   (icon-tools-icon-str "key" :face 'icon-tools-cyan)
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-customize-group-icon (cand)
   "Return the icon for the candidate CAND of completion category `customize-group'."
   (concat
-   (icon-tools-icon-str "wrench" 'icon-tools-orange)
+   (icon-tools-icon-str "wrench" :face 'icon-tools-orange)
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-minor-mode-icon (cand)
   "Return the icon for the candidate CAND of completion category minor-mode."
   (concat
-   (icon-tools-icon-str "gear" 'icon-tools-dcyan)
+   (icon-tools-icon-str "gear" :face 'icon-tools-dcyan)
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-completion-metadata-get (orig metadata prop)

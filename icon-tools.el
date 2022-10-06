@@ -51,14 +51,22 @@
 (defvar icon-tools-svg-icon-cache
   (make-hash-table :test 'equal :size 250))
 
-(defun icon-tools-svg-icon-cache-add (icon icon-name &optional face)
-  (puthash (format "%s-%s-%d-%d" icon-name (symbol-name (or face 'default))
-                   (window-font-width) (window-font-height))
+(defun icon-tools-svg-icon-cache-add (icon icon-name &rest args)
+  (puthash (format "%s-%s-%s-%d-%d"
+                   icon-name
+                   (symbol-name (or (plist-get args :face) 'default))
+                   (or (plist-get args :scale) 1.0)
+                   (window-font-width)
+                   (window-font-height))
            icon icon-tools-svg-icon-cache))
 
-(defun icon-tools-svg-icon-cache-get (icon-name &optional face)
-  (gethash (format "%s-%s-%d-%d" icon-name (symbol-name (or face 'default))
-                   (window-font-width) (window-font-height))
+(defun icon-tools-svg-icon-cache-get (icon-name &rest args)
+  (gethash (format "%s-%s-%s-%d-%d"
+                   icon-name
+                   (symbol-name (or (plist-get args :face) 'default))
+                   (or (plist-get args :scale) 1.0)
+                   (window-font-width)
+                   (window-font-height))
            icon-tools-svg-icon-cache))
 
 (defun icon-tools-svg-icon-filepath (icon-name)
@@ -137,18 +145,22 @@ If COLOR-NAME is unknown to Emacs, then return COLOR-NAME as-is."
         (setq face0 (face-attribute face0 :inherit)))
       val)))
 
-(defun icon-tools-svg-icon (icon-name &optional face scale)
+(defun icon-tools-svg-icon (icon-name &rest args)
   "Build the icon ICON-NAME.
 
-Icon is drawn with the foreground of FACE.
+ARGS are additional plist arguments where properties FACE and
+SCALE are supported.
 
-The third argument SCALE, if provided, scales the icon."
+Icon is drawn with the foreground of FACE and scaled with SCALE."
 
-  (let ((cache-item (icon-tools-svg-icon-cache-get icon-name face)))
-    ;; (if cache-item
-    (if nil
+  (let ((cache-item (icon-tools-svg-icon-cache-get icon-name args)))
+    (if cache-item
+    ;; (if nil
         cache-item
-      (let* ((root (icon-tools-svg-icon-parse icon-name))
+      (let* ((face (plist-get args :face))
+             (scale (plist-get args :scale))
+
+             (root (icon-tools-svg-icon-parse icon-name))
 
              ;; Read original viewbox
              (viewbox-str (cdr (assq 'viewBox (xml-node-attributes (car root)))))
@@ -174,7 +186,7 @@ The third argument SCALE, if provided, scales the icon."
              ;; ;; (svg-height (window-font-height)
              (svg-height (* (window-font-width) 2))
 
-             ;; Scale
+             ;; Scale by zooming in/out the svg viewbox
              (multiplier (if scale
                              (* (/ 1 scale)
                                 (icon-tools--svg-icon-get-viewbox-multiplier icon-name))
@@ -217,23 +229,26 @@ The third argument SCALE, if provided, scales the icon."
         (icon-tools--svg-icon-recursively-copy-children svg (car root) fg-color)
 
         (icon-tools-svg-icon-cache-add (svg-image svg :ascent 'center :scale 1)
-                                       icon-name face)))))
+                                       icon-name args)))))
 
-(defun icon-tools-svg-icon-str (icon-name &optional face scale)
+(defun icon-tools-svg-icon-str (icon-name &rest args)
   (if (image-type-available-p 'svg)
       (propertize
        (make-string icon-tools-icon-width ?\-)
-       'display (icon-tools-svg-icon icon-name face scale))
+       'display (apply #'icon-tools-svg-icon icon-name args))
     ""))
 
-(defun icon-tools-nerd-icon-str (icon-name &optional face)
+(defun icon-tools-nerd-icon-str (icon-name &rest args)
   (propertize (or (cdr (assoc icon-name icon-tools-data-nerd-alist)) "")
-              'face `(:foreground ,(face-attribute (or face 'default) :foreground))))
+              'face `(:foreground
+                      ,(face-attribute
+                        (or (plist-get args :face) 'default)
+                        :foreground))))
 
-(defun icon-tools-icon-str (icon-name &optional face scale)
+(defun icon-tools-icon-str (icon-name &rest args)
   (if (display-graphic-p)
-      (icon-tools-svg-icon-str icon-name face scale)
-    (icon-tools-nerd-icon-str icon-name face)))
+      (apply #'icon-tools-svg-icon-str icon-name args)
+    (apply #'icon-tools-nerd-icon-str icon-name args)))
 
 ;; Icon alists --------------------------------------------------------------- ;
 
@@ -1006,13 +1021,13 @@ Note: You want chevron, please use `icon-tools-icon-for-dir-with-chevron'."
         (face1 (or face 'icon-tools-blue)))
     (cond
      ((file-remote-p path)
-      (icon-tools-icon-str "terminal" face1))
+      (icon-tools-icon-str "terminal" :face face1))
      ((file-symlink-p path)
-      (icon-tools-icon-str "file-symlink-directory" face1))
+      (icon-tools-icon-str "file-symlink-directory" :face face1))
      ((icon-tools-dir-is-submodule path)
-      (icon-tools-icon-str "file-submodule" face1))
+      (icon-tools-icon-str "file-submodule" :face face1))
      ((file-exists-p (format "%s/.git" path))
-      (icon-tools-icon-str "repo" face1))
+      (icon-tools-icon-str "repo" :face face1))
      (t
       (let* ((dir-name (file-name-base (directory-file-name dir)))
              (match (or (cdr (icon-tools--match-to-alist
@@ -1021,7 +1036,7 @@ Note: You want chevron, please use `icon-tools-icon-for-dir-with-chevron'."
                         icon-tools-default-dir-icon))
              (icon-name (car match))
              (face1 (or face (cadr match))))
-        (icon-tools-icon-str icon-name face1))))))
+        (icon-tools-icon-str icon-name :face face1))))))
 
 ;;;###autoload
 (defun icon-tools-icon-for-str (str &optional face)
@@ -1029,7 +1044,7 @@ Note: You want chevron, please use `icon-tools-icon-for-dir-with-chevron'."
   (when-let ((match (icon-tools--match-to-alist
                      str icon-tools-regexp-icon-alist)))
     (icon-tools-icon-str
-     (cadr match) (or face (caddr match)))))
+     (cadr match) :face (or face (caddr match)))))
 
 ;;;###autoload
 (defun icon-tools-icon-for-file (file &optional face)
@@ -1043,7 +1058,7 @@ Note: You want chevron, please use `icon-tools-icon-for-dir-with-chevron'."
                     icon-tools-default-file-icon))
          (icon-name (car match))
          (face1 (or face (cadr match))))
-    (icon-tools-icon-str icon-name face1)))
+    (icon-tools-icon-str icon-name :face face1)))
 
 ;;;###autoload
 (defun icon-tools-icon-for-mode (mode &optional face)
@@ -1058,8 +1073,8 @@ inserting functions."
       (setq match (assoc mode0 icon-tools-mode-icon-alist)))
     (if match
         (icon-tools-icon-str
-         (cadr match) (or face (caddr match)))
-      (icon-tools-icon-str "buffer" (or face 'icon-tools-purple)))))
+         (cadr match) :face (or face (caddr match)))
+      (icon-tools-icon-str "buffer" :face (or face 'icon-tools-purple)))))
 
 (provide 'icon-tools)
 

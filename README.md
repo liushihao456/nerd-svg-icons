@@ -58,7 +58,7 @@ To build an icon, just evaluate (for example):
 ``` elisp
 (icon-tools-icon-str "repo")
 ;; or
-(icon-tools-icon-str "repo" 'face-to-use)
+(icon-tools-icon-str "repo" :face 'icon-tools-orange :scale 1.2)
 ```
 
 It will return a string containing the icon that can be inserted.
