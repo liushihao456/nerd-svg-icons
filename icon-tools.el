@@ -1076,6 +1076,28 @@ inserting functions."
          (cadr match) :face (or face (caddr match)))
       (icon-tools-icon-str "buffer" :face (or face 'icon-tools-purple)))))
 
+;; Overriding all-the-icons -------------------------------------------------- ;
+
+;;;###autoload
+(define-minor-mode icon-tools-override-mode
+  "Override `all-the-icons' functions with `icon-tools` ones."
+  :global t
+  (if icon-tools-override-mode
+      (progn
+        (require 'all-the-icons)
+        (advice-add #'all-the-icons-alltheicon :override #'icon-tools-icon-str)
+        (advice-add #'all-the-icons-fileicon :override #'icon-tools-icon-str)
+        (advice-add #'all-the-icons-octicon :override #'icon-tools-icon-str)
+        (advice-add #'all-the-icons-material :override #'icon-tools-icon-str)
+        (advice-add #'all-the-icons-faicon :override #'icon-tools-icon-str)
+        (advice-add #'all-the-icons-wicon :override #'icon-tools-icon-str))
+    (advice-remove #'all-the-icons-alltheicon #'icon-tools-icon-str)
+    (advice-remove #'all-the-icons-fileicon #'icon-tools-icon-str)
+    (advice-remove #'all-the-icons-octicon #'icon-tools-icon-str)
+    (advice-remove #'all-the-icons-material #'icon-tools-icon-str)
+    (advice-remove #'all-the-icons-faicon #'icon-tools-icon-str)
+    (advice-remove #'all-the-icons-wicon #'icon-tools-icon-str)))
+
 (provide 'icon-tools)
 
 ;;; icon-tools.el ends here
