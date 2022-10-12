@@ -117,12 +117,6 @@ If COLOR-NAME is unknown to Emacs, then return COLOR-NAME as-is."
     ("visualstudio" . 0.85)
     ("emacs" . 1.05)
     ("file" . 1.1)
-    ;; ("file-media" . 1.05)
-    ;; ("file-pdf" . 1.05)
-    ;; ("file-binary" . 1.05)
-    ("file-xls" . 1.05)
-    ("file-doc" . 1.05)
-    ("file-ppt" . 1.05)
     ("file-zip" . 1.05)
     ("film" . 0.9)
     ("closed_caption" . 1.15)
@@ -154,7 +148,7 @@ SCALE are supported.
 
 Icon is drawn with the foreground of FACE and scaled with SCALE."
 
-  (let ((cache-item (icon-tools-svg-icon-cache-get icon-name args)))
+  (let ((cache-item (apply #'icon-tools-svg-icon-cache-get icon-name args)))
     (if cache-item
     ;; (if nil
         cache-item
@@ -229,8 +223,8 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
         ;; Insert all parsed nodes, replacing colors with fg-color
         (icon-tools--svg-icon-recursively-copy-children svg (car root) fg-color)
 
-        (icon-tools-svg-icon-cache-add (svg-image svg :ascent 'center :scale 1)
-                                       icon-name args)))))
+        (apply #'icon-tools-svg-icon-cache-add (svg-image svg :ascent 'center :scale 1)
+               icon-name args)))))
 
 (defun icon-tools-svg-icon-str (icon-name &rest args)
   (if (image-type-available-p 'svg)
