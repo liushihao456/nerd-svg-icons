@@ -114,6 +114,7 @@ If COLOR-NAME is unknown to Emacs, then return COLOR-NAME as-is."
     ("java" . 1.2)
     ("database" . 0.9)
     ("file-directory" . 1.05)
+    ("visualstudio" . 0.85)
     ("emacs" . 1.05)
     ("file" . 1.1)
     ;; ("file-media" . 1.05)
