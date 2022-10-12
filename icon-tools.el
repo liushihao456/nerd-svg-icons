@@ -986,6 +986,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     (lilypond-mode                      "music"             icon-tools-green)
     (magik-session-mode                 "terminal"          icon-tools-blue)
     (magik-cb-mode                      "book"              icon-tools-blue)
+    (dashboard-mode                     "dashboard"         icon-tools-orange)
     ))
 
 (defvar icon-tools-default-mode-icon
