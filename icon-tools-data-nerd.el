@@ -115,7 +115,7 @@
     ("gear"                    . " ")
     ("gears"                   . " ")
     ("gentoo"                  . " ")
-    ("git"                     . " ")
+    ("git"                     . " ")
     ("git-branch"              . " ")
     ("git-commit"              . " ")
     ("git-compare"             . " ")
