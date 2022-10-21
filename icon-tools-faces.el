@@ -28,7 +28,6 @@
 (defgroup icon-tools-faces nil
   "Manage how All The Icons icons are coloured and themed."
   :prefix "icon-tools-"
-  :group 'tools
   :group 'icon-tools)
 
 ;; red
