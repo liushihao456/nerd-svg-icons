@@ -1010,21 +1010,24 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
         (search-forward-regexp module-search (point-max) t)))))
 
 ;;;###autoload
-(defun icon-tools-icon-for-dir (dir &optional face)
-  "Get the formatted icon for DIR with FACE, if provided.
+(defun icon-tools-icon-for-dir (dir &rest args)
+  "Get the formatted icon for DIR.
 
-Note: You want chevron, please use `icon-tools-icon-for-dir-with-chevron'."
-  (let ((path (expand-file-name dir))
-        (face1 (or face 'icon-tools-blue)))
+ARGS should be a plist containining `:face' or `:scale'."
+  (let ((path (expand-file-name dir)))
     (cond
      ((file-remote-p path)
-      (icon-tools-icon-str "terminal" :face face1))
+      (apply #'icon-tools-icon-str "terminal"
+             (append args '(:face icon-tools-blue))))
      ((file-symlink-p path)
-      (icon-tools-icon-str "file-symlink-directory" :face face1))
+      (apply #'icon-tools-icon-str "file-symlink-directory"
+             (append args '(:face icon-tools-blue))))
      ((icon-tools-dir-is-submodule path)
-      (icon-tools-icon-str "file-submodule" :face face1))
+      (apply #'icon-tools-icon-str "file-submodule"
+             (append args '(:face icon-tools-blue))))
      ((file-exists-p (format "%s/.git" path))
-      (icon-tools-icon-str "repo" :face face1))
+      (apply #'icon-tools-icon-str "repo"
+             (append args '(:face icon-tools-blue))))
      (t
       (let* ((dir-name (file-name-base (directory-file-name dir)))
              (match (or (cdr (icon-tools--match-to-alist
@@ -1032,46 +1035,66 @@ Note: You want chevron, please use `icon-tools-icon-for-dir-with-chevron'."
                               icon-tools-dir-regexp-icon-alist))
                         icon-tools-default-dir-icon))
              (icon-name (car match))
-             (face1 (or face (cadr match))))
-        (icon-tools-icon-str icon-name :face face1))))))
+             (face (cadr match)))
+        (apply #'icon-tools-icon-str icon-name
+               (append args `(:face ,(or face 'icon-tools-blue)))))))))
 
 ;;;###autoload
-(defun icon-tools-icon-for-str (str &optional face)
-  "Get the formatted icon for STR with FACE, if provided."
+(defun icon-tools-icon-for-str (str &rest args)
+  "Get the formatted icon for STR.
+
+ARGS should be a plist containining `:face' or `:scale'."
   (when-let ((match (icon-tools--match-to-alist
                      str icon-tools-regexp-icon-alist)))
-    (icon-tools-icon-str
-     (cadr match) :face (or face (caddr match)))))
+    (apply #'icon-tools-icon-str (cadr match)
+           (append args `(:face ,(caddr match))))))
 
 ;;;###autoload
-(defun icon-tools-icon-for-file (file &optional face)
-  "Get the formatted icon for FILE with FACE, if provided."
+(defun icon-tools-icon-for-file (file &rest args)
+  "Get the formatted icon for FILE.
+
+ARGS should be a plist containining `:face' or `:scale'."
   (let* ((ext (file-name-extension file))
          (match (or (cdr (icon-tools--match-to-alist
                           file icon-tools-regexp-icon-alist))
                     (and ext (cdr
                               (assoc (downcase ext)
                                      icon-tools-extension-icon-alist)))
-                    icon-tools-default-file-icon))
-         (icon-name (car match))
-         (face1 (or face (cadr match))))
-    (icon-tools-icon-str icon-name :face face1)))
+                    icon-tools-default-file-icon)))
+    (apply #'icon-tools-icon-str (car match)
+           (append args `(:face ,(cadr match))))))
 
 ;;;###autoload
-(defun icon-tools-icon-for-mode (mode &optional face)
-  "Get the formatted icon for MODE with FACE, if provided.
-ARG-OVERRIDES should be a plist containining `:height',
-`:v-adjust' or `:face' properties like in the normal icon
-inserting functions."
+(defun icon-tools-icon-for-mode (mode &rest args)
+  "Get the formatted icon for MODE.
+
+ARGS should be a plist containining `:face' or `:scale'."
   (let* ((mode0 mode)
          (match (assoc mode0 icon-tools-mode-icon-alist)))
     (while (and mode0 (not match))
       (setq mode0 (get mode0 'derived-mode-parent))
       (setq match (assoc mode0 icon-tools-mode-icon-alist)))
     (if match
-        (icon-tools-icon-str
-         (cadr match) :face (or face (caddr match)))
-      (icon-tools-icon-str "buffer" :face (or face 'icon-tools-purple)))))
+        (apply #'icon-tools-icon-str (cadr match)
+               (append args `(:face ,(caddr match))))
+      (apply #'icon-tools-icon-str "buffer"
+             (append args '(:face icon-tools-purple))))))
+
+;;;###autoload
+(defun icon-tools-icon-for-tag-kind (kind &rest args)
+  "Get the formatted icon for tag KIND.
+
+ARGS should be a plist containining `:face' or `:scale'."
+  (cond
+   ((equal kind "function")
+    (apply #'icon-tools-icon-str "function"
+           (append args '(:face icon-tools-purple))))
+   ((equal kind "variable")
+    (apply #'icon-tools-icon-str "variable"
+           (append args '(:face icon-tools-lblue))))
+   (t
+    (apply #'icon-tools-icon-str "tag"
+           (append args '(:face icon-tools-purple))))))
 
 ;; Overriding all-the-icons -------------------------------------------------- ;
 

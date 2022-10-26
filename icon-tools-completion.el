@@ -144,7 +144,9 @@
 (defun icon-tools-completion-get-imenu-icon (cand)
   "Return the icon for the candidate CAND of completion category imenu."
   (concat
-   (icon-tools-icon-str "tag" :face 'icon-tools-lpurple)
+   (if-let (kind (get-text-property 0 'kind cand))
+       (icon-tools-icon-for-tag-kind kind)
+     (icon-tools-icon-str "tag" :face 'icon-tools-lpurple))
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-package-icon (cand)
