@@ -990,6 +990,48 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     (dashboard-mode                     "dashboard"         icon-tools-orange)
     ))
 
+(defvar icon-tools-symbol-kind-icon-alist
+  '(
+    ;; C, C++, java, python
+    ("function" "function" icon-tools-purple 0.95)
+    ("method" "function" icon-tools-purple 0.95)
+    ("prototype" "function" icon-tools-purple 0.95)
+    ("annotation" "function" icon-tools-purple 0.95)
+    ("class" "symbol-class" icon-tools-lorange)
+    ("struct" "symbol-class" icon-tools-lorange)
+    ("interface" "symbol-class" icon-tools-lorange)
+    ("union" "symbol-misc" icon-tools-lorange 0.95)
+    ("enum" "symbol-enumerator" icon-tools-lorange)
+    ("enumerator" "symbol-enumerator-member" icon-tools-lblue :scale 0.9)
+    ("using" "symbol-namespace" icon-tools-dyellow)
+    ("namespace" "symbol-namespace" icon-tools-dyellow)
+    ("variable" "variable" icon-tools-lblue 0.95)
+    ("member" "variable" icon-tools-lblue 0.95)
+    ("field" "variable" icon-tools-lblue 0.95)
+    ("local" "variable-local" icon-tools-dblue 1.1)
+    ("macro" "macro" icon-tools-purple 0.85)
+    ("parameter" "symbol-parameter" icon-tools-dpurple 1.1)
+    ("typedef" "references" icon-tools-lmaroon 0.8)
+    ("package" "package" icon-tools-lblue 0.9)
+
+    ;; Elisp
+    ("derivedMode" "gears" icon-tools-purple 0.9)
+    ("majorMode" "gears" icon-tools-purple 0.9)
+    ("minorMode" "gears" icon-tools-purple 0.9)
+    ("inline" "function" icon-tools-purple 0.95)
+    ("subst" "function" icon-tools-purple 0.95)
+    ("group" "package" icon-tools-lblue 0.9)
+    ("error" "error" icon-tools-lblue)
+    ("custom" "settings" icon-tools-orange)
+    ("face" "color" icon-tools-red)
+    ("const" "symbol-constant" icon-tools-lgreen)
+    ("alias" "references" icon-tools-lmaroon 0.8)
+    ("unknown" "circle-question" icon-tools-dyellow 0.9)
+
+    ;; Markdown
+    ("section" "section" icon-tools-lorange 0.9)
+    ))
+
 (defvar icon-tools-default-mode-icon
   '("file-directory" icon-tools-dsilver))
 
@@ -1081,20 +1123,15 @@ ARGS should be a plist containining `:face' or `:scale'."
              (append args '(:face icon-tools-purple))))))
 
 ;;;###autoload
-(defun icon-tools-icon-for-tag-kind (kind &rest args)
-  "Get the formatted icon for tag KIND.
+(defun icon-tools-icon-for-symbol-kind (kind &rest args)
+  "Get the formatted icon for symbol KIND.
 
 ARGS should be a plist containining `:face' or `:scale'."
-  (cond
-   ((equal kind "function")
-    (apply #'icon-tools-icon-str "function"
-           (append args '(:face icon-tools-purple))))
-   ((equal kind "variable")
-    (apply #'icon-tools-icon-str "variable"
-           (append args '(:face icon-tools-lblue))))
-   (t
-    (apply #'icon-tools-icon-str "tag"
-           (append args '(:face icon-tools-purple))))))
+  (if-let* ((spec (cdr (assoc kind icon-tools-symbol-kind-icon-alist)))
+            (icon-str (icon-tools-icon-str (car spec) :face (cadr spec) :scale (caddr spec)))
+            ((not (string-empty-p icon-str))))
+      icon-str
+    (icon-tools-icon-str "tag" :face 'icon-tools-pink)))
 
 ;; Overriding all-the-icons -------------------------------------------------- ;
 
