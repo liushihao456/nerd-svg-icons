@@ -120,6 +120,7 @@ If COLOR-NAME is unknown to Emacs, then return COLOR-NAME as-is."
     ("file" . 1.1)
     ("file-zip" . 1.05)
     ("film" . 0.9)
+    ("symbol-parameter" . 1.15)
     ("closed_caption" . 1.15)
     ("variable-local" . 1.05)
     ("repo" . 1.1)))
