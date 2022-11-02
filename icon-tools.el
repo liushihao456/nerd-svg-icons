@@ -1012,22 +1012,26 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     ("variable"       "variable"                  icon-tools-lblue 0.95)
     ("member"         "variable"                  icon-tools-lblue 0.95)
     ("field"          "variable"                  icon-tools-lblue 0.95)
+    ("externvar"      "variable"                  icon-tools-dorange 0.95)
     ("local"          "variable-local"            icon-tools-dblue 1.1)
     ("macro"          "macro"                     icon-tools-purple 0.85)
     ("string"         "symbol-string"             icon-tools-blue 0.9)
     ("boolean"        "symbol-boolean"            icon-tools-lpurple 0.9)
     ("array"          "symbol-array"              icon-tools-maroon 0.85)
+    ("number"         "symbol-numeric"            icon-tools-lgreen 0.85)
     ("object"         "symbol-misc"               icon-tools-lgreen 0.95)
     ("misc"           "symbol-misc"               icon-tools-lgreen 0.95)
     ("operator"       "symbol-operator"           icon-tools-orange 0.9)
     ("parameter"      "symbol-parameter"          icon-tools-dpurple 1.1)
-    ("typeparameter"  "symbol-parameter"          icon-tools-dpurple 1.1)
+    ("macroparam"     "symbol-parameter"          icon-tools-purple 1.1)
+    ("typeparameter"  "symbol-parameter"          icon-tools-lmaroon 1.1)
+    ("tparam"         "symbol-parameter"          icon-tools-lmaroon 1.1)
     ("event"          "symbol-event"              icon-tools-yellow 0.95)
     ("typedef"        "references"                icon-tools-lmaroon 0.8)
     ("package"        "package"                   icon-tools-lblue 0.9)
     ("module"         "package"                   icon-tools-lblue 0.9)
     ("key"            "symbol-key"                icon-tools-dblue 0.9)
-    ("null"           "wi-na"                     icon-tools-lmaroon 1.1)
+    ("null"           "wi-na"                     icon-tools-lmaroon 1.5)
 
     ;; Elisp
     ("derivedMode"  "gears"                     icon-tools-purple 0.9)
@@ -1048,7 +1052,13 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     ("property"     "symbol-property"           icon-tools-blue)
 
     ;; Markdown
+    ("chapter"      "sticky_note"               icon-tools-yellow)
     ("section"      "section"                   icon-tools-lorange 0.9)
+    ("section"      "section"                   icon-tools-lorange 0.9)
+    ("subsection"   "section"                   icon-tools-orange 0.8)
+
+    ;; Org
+    ("part"         "pagelines"                 icon-tools-lmaroon)
     ))
 
 (defvar icon-tools-default-mode-icon
