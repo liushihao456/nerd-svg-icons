@@ -1019,7 +1019,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     ("boolean"        "symbol-boolean"            icon-tools-lpurple 0.9)
     ("array"          "symbol-array"              icon-tools-maroon 0.85)
     ("number"         "symbol-numeric"            icon-tools-lgreen 0.85)
-    ("object"         "symbol-misc"               icon-tools-lgreen 0.95)
+    ("object"         "symbol-namespace"          icon-tools-lgreen 0.95)
     ("misc"           "symbol-misc"               icon-tools-lgreen 0.95)
     ("operator"       "symbol-operator"           icon-tools-orange 0.9)
     ("parameter"      "symbol-parameter"          icon-tools-dpurple 1.1)
@@ -1030,7 +1030,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     ("typedef"        "references"                icon-tools-lmaroon 0.8)
     ("package"        "package"                   icon-tools-lblue 0.9)
     ("module"         "package"                   icon-tools-lblue 0.9)
-    ("key"            "symbol-key"                icon-tools-dblue 0.9)
+    ("key"            "symbol-key"                icon-tools-dblue 1.05)
     ("null"           "wi-na"                     icon-tools-lmaroon 1.5)
 
     ;; Elisp
@@ -1053,7 +1053,6 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
 
     ;; Markdown
     ("chapter"      "sticky_note"               icon-tools-yellow)
-    ("section"      "section"                   icon-tools-lorange 0.9)
     ("section"      "section"                   icon-tools-lorange 0.9)
     ("subsection"   "section"                   icon-tools-orange 0.8)
 
