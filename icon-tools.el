@@ -258,6 +258,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     ("bat"                  "terminal"              icon-tools-purple)
     ;; Meta
     ("tags"                 "tag"                   icon-tools-blue)
+    ("tag"                  "tag"                   icon-tools-blue)
     ("log"                  "bug"                   icon-tools-maroon)
     ("aux"                  "bug"                   icon-tools-maroon)
     ("nav"                  "bug"                   icon-tools-maroon)
@@ -269,6 +270,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     ("exe"                  "file-binary"           icon-tools-dsilver)
     ("dll"                  "gears"                 icon-tools-dsilver)
     ("lib"                  "file-binary"           icon-tools-dsilver)
+    ("class"                "file-binary"           icon-tools-dsilver)
     ("obj"                  "file-binary"           icon-tools-dsilver)
     ("so"                   "file-binary"           icon-tools-dsilver)
     ("o"                    "file-binary"           icon-tools-dsilver)
@@ -599,7 +601,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     ("cmake"                "cmake"                 icon-tools-red)
     ("cmakelists.txt"       "cmake"                 icon-tools-red)
     ("ninja"                "ninja")
-    ("makefile"             "file-text"             icon-tools-cyan)
+    ("makefile"             "makefile"              icon-tools-cyan)
     ("dockerignore"         "docker"                icon-tools-dblue)
     ("xml"                  "code"                  icon-tools-lorange)
     ("json"                 "settings"              icon-tools-yellow)
@@ -686,6 +688,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
   '(
     ;;
     ("^TAGS$"                   "tag"             icon-tools-blue)
+    ("^TAG$"                    "tag"             icon-tools-blue)
     ("^TODO$"                   "checklist"       icon-tools-lyellow)
     ("^LICENSE$"                "book"            icon-tools-blue)
     ("^readme.md$"              "markdown"        icon-tools-lblue)
@@ -698,7 +701,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     ("apache$"                  "apache"          icon-tools-dgreen)
 
     ;; C
-    ("^Makefile$"               "gnu"             icon-tools-dorange)
+    ("^Makefile$"               "makefile"        icon-tools-dorange)
     ("^CMakeLists.txt$"         "cmake"           icon-tools-red)
     ("^CMakeCache.txt$"         "cmake"           icon-tools-blue)
     ("cmake"                    "cmake"           icon-tools-red)
@@ -893,7 +896,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
     (fish-mode                          "terminal"          icon-tools-lpink)
     (nginx-mode                         "nginx"             icon-tools-dgreen)
     (apache-mode                        "apache"            icon-tools-dgreen)
-    (makefile-mode                      "gnu"               icon-tools-dorange)
+    (makefile-mode                      "makefile"          icon-tools-dorange)
     (cmake-mode                         "cmake"             icon-tools-red)
     (dockerfile-mode                    "docker"            icon-tools-blue)
     (docker-compose-mode                "docker"            icon-tools-lblue)
