@@ -63,13 +63,19 @@
                      (icon-tools-icon-str "chevron-down" :face 'font-lock-doc-face)
                      (icon-tools-icon-str "file-directory" :face 'font-lock-doc-face))
        :fallback 'same-as-icon
-       :extensions (dir-open))
+       :extensions (dir-open "src-open" "test-open" "bin-open" "build-open" "git-open"
+                             "github-open" "public-open" "private-open" "temp-open"
+                             "tmp-open" "readme-open" "docs-open" "screenshots-open"
+                             "icons-open"))
       (treemacs-create-icon
        :icon (format "%s%s\t"
                      (icon-tools-icon-str "chevron-right" :face 'font-lock-doc-face)
                      (icon-tools-icon-str "file-directory" :face 'font-lock-doc-face))
        :fallback 'same-as-icon
-       :extensions (dir-closed))
+       :extensions (dir-closed "src-closed" "test-closed" "bin-closed" "build-closed" "git-closed"
+                               "github-closed" "public-closed" "private-closed" "temp-closed"
+                               "tmp-closed" "readme-closed" "docs-closed" "screenshots-closed"
+                               "icons-closed"))
 
       (treemacs-create-icon
        :icon (format "%s%s\t"
