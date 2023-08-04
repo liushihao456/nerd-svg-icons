@@ -1,11 +1,11 @@
-# Icon-tools for Emacs
+# nerd-icons for Emacs
 ## GUI Emacs:
 ![Screenshot](./screenshot.png)
 
 ## Terminal Emacs (on macOS Terminal.app):
 ![Screenshot](./screenshot-terminal.png)
 
-Icon-tools makes inserting icons in Emacs graceful and painless. It uses SVG icons in GUI Emacs and [Nerd font](https://www.nerdfonts.com/) icons in Terminal Emacs.
+nerd-icons makes inserting icons in Emacs graceful and painless. It uses SVG icons in GUI Emacs and [Nerd font](https://www.nerdfonts.com/) icons in Terminal Emacs.
 
 It is partially meant as an alternative to [`all-the-icons`](https://github.com/domtronn/all-the-icons.el) to provide better looking and experience.
 
@@ -30,25 +30,25 @@ It is partially meant as an alternative to [`all-the-icons`](https://github.com/
 First, clone the repo:
 
 ``` shell
-git clone --depth=1 https://github.com/liushihao456/icon-tools.git
+git clone --depth=1 https://github.com/liushihao456/nerd-icons.git
 ```
 
 Then load it:
 
 ``` elisp
-(add-to-list 'load-path "/path/to/icon-tools/")
+(add-to-list 'load-path "/path/to/nerd-icons/")
 
 ;; Minibuffer completion icons
-(require 'icon-tools-completion)
-(icon-tools-completion-mode t)
+(require 'nerd-icons-completion)
+(nerd-icons-completion-mode t)
 
 ;; Dired icons
-(require 'icon-tools-dired)
-(add-hook 'dired-mode-hook 'icon-tools-dired-mode)
+(require 'nerd-icons-dired)
+(add-hook 'dired-mode-hook 'nerd-icons-dired-mode)
 
 ;; Treemacs icons
-(require 'icon-tools-treemacs-icons)
-(icon-tools-treemacs-icons-config)
+(require 'nerd-icons-treemacs-icons)
+(nerd-icons-treemacs-icons-config)
 ```
 
 ## Basic usage
@@ -56,9 +56,9 @@ Then load it:
 To build an icon, just evaluate (for example):
 
 ``` elisp
-(icon-tools-icon-str "repo")
+(nerd-icons-icon-str "repo")
 ;; or
-(icon-tools-icon-str "repo" :face 'icon-tools-orange :scale 1.2)
+(nerd-icons-icon-str "repo" :face 'nerd-icons-orange :scale 1.2)
 ```
 
 It will return a string containing the icon that can be inserted.

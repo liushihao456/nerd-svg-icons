@@ -1,4 +1,4 @@
-;;; icon-tools-data-nerd.el --- Icon-tools nerd icon data  -*- lexical-binding: t; -*-
+;;; nerd-icons-data-nerd.el --- nerd-icons nerd icon data  -*- lexical-binding: t; -*-
 
 ;; Author: Shihao Liu
 ;; Keywords: treemacs nerd icon
@@ -42,6 +42,6 @@
 (require 'nerd-icons-data-flicon    "./data/nerd-icons-data-flicon")
 (require 'nerd-icons-data-mdicon    "./data/nerd-icons-data-mdicon")
 
-(provide 'icon-tools-data-nerd)
+(provide 'nerd-icons-data-nerd)
 
-;; icon-tools-data-nerd.el ends here
+;; nerd-icons-data-nerd.el ends here

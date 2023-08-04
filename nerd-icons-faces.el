@@ -1,4 +1,4 @@
-;;; icon-tools-faces.el --- A module of faces for icon-tools
+;;; nerd-icons-faces.el --- A module of faces for nerd-icons
 
 ;; Author: Shihao Liu
 ;; Keywords: icon
@@ -25,201 +25,201 @@
 
 ;;; Code:
 
-(defgroup icon-tools-faces nil
+(defgroup nerd-icons-faces nil
   "Manage how All The Icons icons are coloured and themed."
-  :prefix "icon-tools-"
-  :group 'icon-tools)
+  :prefix "nerd-icons-"
+  :group 'nerd-icons)
 
 ;; red
-(defface icon-tools-red
+(defface nerd-icons-red
   '((((background dark)) :foreground "#AC4142")
     (((background light)) :foreground "#AC4142"))
   "Face for red icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-lred
+  :group 'nerd-icons-faces)
+(defface nerd-icons-lred
   '((((background dark)) :foreground "#EB595A")
     (((background light)) :foreground "#EB595A"))
   "Face for lred icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-dred
+  :group 'nerd-icons-faces)
+(defface nerd-icons-dred
   '((((background dark)) :foreground "#843031")
     (((background light)) :foreground "#843031"))
   "Face for dred icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-red-alt
+  :group 'nerd-icons-faces)
+(defface nerd-icons-red-alt
   '((((background dark)) :foreground "#ce5643")
     (((background light)) :foreground "#843031"))
   "Face for dred icons"
-  :group 'icon-tools-faces)
+  :group 'nerd-icons-faces)
 
 ;; green
-(defface icon-tools-green
+(defface nerd-icons-green
   '((((background dark)) :foreground "#90A959")
     (((background light)) :foreground "#90A959"))
   "Face for green icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-lgreen
+  :group 'nerd-icons-faces)
+(defface nerd-icons-lgreen
   '((((background dark)) :foreground "#C6E87A")
     (((background light)) :foreground "#3D6837"))
   "Face for lgreen icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-dgreen
+  :group 'nerd-icons-faces)
+(defface nerd-icons-dgreen
   '((((background dark)) :foreground "#6D8143")
     (((background light)) :foreground "#6D8143"))
   "Face for dgreen icons"
-  :group 'icon-tools-faces)
+  :group 'nerd-icons-faces)
 
 ;; yellow
-(defface icon-tools-yellow
+(defface nerd-icons-yellow
   '((((background dark)) :foreground "#FFD446")
     (((background light)) :foreground "#FFCC0E"))
   "Face for yellow icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-lyellow
+  :group 'nerd-icons-faces)
+(defface nerd-icons-lyellow
   '((((background dark)) :foreground "#FFC16D")
     (((background light)) :foreground "#FF9300"))
   "Face for lyellow icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-dyellow
+  :group 'nerd-icons-faces)
+(defface nerd-icons-dyellow
   '((((background dark)) :foreground "#B48D56")
     (((background light)) :foreground "#B48D56"))
   "Face for dyellow icons"
-  :group 'icon-tools-faces)
+  :group 'nerd-icons-faces)
 
 ;; blue
-(defface icon-tools-blue
+(defface nerd-icons-blue
   '((((background dark)) :foreground "#6A9FB5")
     (((background light)) :foreground "#6A9FB5"))
   "Face for blue icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-blue-alt
+  :group 'nerd-icons-faces)
+(defface nerd-icons-blue-alt
   '((((background dark)) :foreground "#2188b6")
     (((background light)) :foreground "#2188b6"))
   "Face for blue icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-lblue
+  :group 'nerd-icons-faces)
+(defface nerd-icons-lblue
   '((((background dark)) :foreground "#8FD7F4")
     (((background light)) :foreground "#677174"))
   "Face for lblue icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-dblue
+  :group 'nerd-icons-faces)
+(defface nerd-icons-dblue
   '((((background dark)) :foreground "#446674")
     (((background light)) :foreground "#446674"))
   "Face for dblue icons"
-  :group 'icon-tools-faces)
+  :group 'nerd-icons-faces)
 
 ;; maroon
-(defface icon-tools-maroon
+(defface nerd-icons-maroon
   '((((background dark)) :foreground "#8F5536")
     (((background light)) :foreground "#8F5536"))
   "Face for maroon icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-lmaroon
+  :group 'nerd-icons-faces)
+(defface nerd-icons-lmaroon
   '((((background dark)) :foreground "#CE7A4E")
     (((background light)) :foreground "#CE7A4E"))
   "Face for lmaroon icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-dmaroon
+  :group 'nerd-icons-faces)
+(defface nerd-icons-dmaroon
   '((((background dark)) :foreground "#72584B")
     (((background light)) :foreground "#72584B"))
   "Face for dmaroon icons"
-  :group 'icon-tools-faces)
+  :group 'nerd-icons-faces)
 
 ;; purple
-(defface icon-tools-purple
+(defface nerd-icons-purple
   '((((background dark)) :foreground "#AA759F")
     (((background light)) :foreground "#68295B"))
   "Face for purple icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-purple-alt
+  :group 'nerd-icons-faces)
+(defface nerd-icons-purple-alt
   '((((background dark)) :foreground "#5D54E1")
     (((background light)) :foreground "#5D54E1"))
   "Face for purple icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-lpurple
+  :group 'nerd-icons-faces)
+(defface nerd-icons-lpurple
   '((((background dark)) :foreground "#E69DD6")
     (((background light)) :foreground "#E69DD6"))
   "Face for lpurple icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-dpurple
+  :group 'nerd-icons-faces)
+(defface nerd-icons-dpurple
   '((((background dark)) :foreground "#694863")
     (((background light)) :foreground "#694863"))
   "Face for dpurple icons"
-  :group 'icon-tools-faces)
+  :group 'nerd-icons-faces)
 
 ;; orange
-(defface icon-tools-orange
+(defface nerd-icons-orange
   '((((background dark)) :foreground "#D4843E")
     (((background light)) :foreground "#D4843E"))
   "Face for orange icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-lorange
+  :group 'nerd-icons-faces)
+(defface nerd-icons-lorange
   '((((background dark)) :foreground "#FFA500")
     (((background light)) :foreground "#FFA500"))
   "Face for lorange icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-dorange
+  :group 'nerd-icons-faces)
+(defface nerd-icons-dorange
   '((((background dark)) :foreground "#915B2D")
     (((background light)) :foreground "#915B2D"))
   "Face for dorange icons"
-  :group 'icon-tools-faces)
+  :group 'nerd-icons-faces)
 
 ;; cyan
-(defface icon-tools-cyan
+(defface nerd-icons-cyan
   '((((background dark)) :foreground "#75B5AA")
     (((background light)) :foreground "#75B5AA"))
   "Face for cyan icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-cyan-alt
+  :group 'nerd-icons-faces)
+(defface nerd-icons-cyan-alt
   '((((background dark)) :foreground "#61dafb")
     (((background light)) :foreground "#0595bd"))
   "Face for cyan icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-lcyan
+  :group 'nerd-icons-faces)
+(defface nerd-icons-lcyan
   '((((background dark)) :foreground "#A5FDEC")
     (((background light)) :foreground "#2C7D6E"))
   "Face for lcyan icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-dcyan
+  :group 'nerd-icons-faces)
+(defface nerd-icons-dcyan
   '((((background dark)) :foreground "#48746D")
     (((background light)) :foreground "#48746D"))
   "Face for dcyan icons"
-  :group 'icon-tools-faces)
+  :group 'nerd-icons-faces)
 
 ;; pink
-(defface icon-tools-pink
+(defface nerd-icons-pink
   '((((background dark)) :foreground "#F2B4B8")
     (((background light)) :foreground "#FC505B"))
   "Face for pink icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-lpink
+  :group 'nerd-icons-faces)
+(defface nerd-icons-lpink
   '((((background dark)) :foreground "#FFBDC1")
     (((background light)) :foreground "#FF505B"))
   "Face for lpink icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-dpink
+  :group 'nerd-icons-faces)
+(defface nerd-icons-dpink
   '((((background dark)) :foreground "#B18286")
     (((background light)) :foreground "#7E5D5F"))
   "Face for dpink icons"
-  :group 'icon-tools-faces)
+  :group 'nerd-icons-faces)
 
 ;; silver
-(defface icon-tools-silver
+(defface nerd-icons-silver
   '((((background dark)) :foreground "#716E68")
     (((background light)) :foreground "#716E68"))
   "Face for silver icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-lsilver
+  :group 'nerd-icons-faces)
+(defface nerd-icons-lsilver
   '((((background dark)) :foreground "#B9B6AA")
     (((background light)) :foreground "#7F7869"))
   "Face for lsilver icons"
-  :group 'icon-tools-faces)
-(defface icon-tools-dsilver
+  :group 'nerd-icons-faces)
+(defface nerd-icons-dsilver
   '((((background dark)) :foreground "#838484")
     (((background light)) :foreground "#838484"))
   "Face for dsilver icons"
-  :group 'icon-tools-faces)
+  :group 'nerd-icons-faces)
 
 
-(provide 'icon-tools-faces)
-;;; icon-tools-faces.el ends here
+(provide 'nerd-icons-faces)
+;;; nerd-icons-faces.el ends here
