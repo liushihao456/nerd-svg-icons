@@ -1,0 +1,7 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="-11 0 1573 2048">
+   <path fill="currentColor"
+d="M888 1645l480 -484l184 184l-484 480zM1160 949l-264 -260q-16 -16 -36 -24l-96 -368q-8 -36 -38 -54t-64 -8t-52 40t-10 62l92 348l-200 -412q-16 -32 -48 -44t-64 4t-44 48t4 64l144 304l-288 -284q-28 -28 -62 -28t-60 26t-26 62t28 60l316 316l-152 60l-164 112
+l-36 48q-36 56 -40 80t32 128l40 104q8 20 28 34t48 14q36 0 60 -24t24 -60q0 -8 -4 -20v-4l-48 -148l104 -84l168 12q80 72 100 132q16 52 -8 92q-16 28 -48 52l-32 16l-296 88l-12 12q-28 24 -28 64l4 92l548 -44q48 4 88 -32l392 -392q36 -36 36 -92t-36 -92z" />
+</svg>

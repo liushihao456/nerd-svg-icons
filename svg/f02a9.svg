@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="-10 0 1724 2048">
+   <path fill="currentColor"
+d="M0 598v256q0 164 80 300t216 216t300 80h512q164 0 300 -80t216 -216t80 -300v-256h-1704zM168 770h1368v84q0 116 -58 214t-156 156t-214 58h-512q-116 0 -214 -58t-156 -156t-58 -214v-84z" />
+</svg>

@@ -82,7 +82,7 @@
 (defun icon-tools-completion-get-command-icon (cand)
   "Return the icon for the candidate CAND of completion category command."
   (concat
-   (icon-tools-icon-str "command" :face 'icon-tools-purple)
+   (icon-tools-icon-for-symbol-kind "command")
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-buffer-icon (cand)
@@ -96,36 +96,29 @@
 (defun icon-tools-completion-get-face-icon (cand)
   "Return the icon for the candidate CAND of completion category face."
   (concat
-   (icon-tools-icon-str "color" :face (intern-soft cand))
+   (icon-tools-icon-for-symbol-kind "face" :face (intern-soft cand))
    (make-string icon-tools-completion-icon-right-padding ?\s)))
 
 (defun icon-tools-completion-get-bookmark-icon (cand)
   "Return the icon for the candidate CAND of completion category bookmark."
   (if-let ((bm (assoc cand (bound-and-true-p bookmark-alist))))
       (icon-tools-completion-get-file-icon (bookmark-get-filename bm))
-    (icon-tools-icon-str "bookmark" :face 'icon-tools-orange)))
+    (icon-tools-icon-str "fa-bookmark" :face 'icon-tools-orange)))
 
 (defun icon-tools-completion-get-symbol-icon (cand)
   "Return the icon for the candidate CAND of completion category symbol."
-  (let ((s (intern-soft cand)))
+  (let* ((s (intern-soft cand))
+         (kind (cond
+                ((commandp s) "command")
+                ((macrop (symbol-function s)) "macro")
+                ((fboundp s) "function")
+                ((facep s) "face")
+                ((and (boundp s) (custom-variable-p s)) "custom")
+                ((and (boundp s) (local-variable-if-set-p s)) "local")
+                ((boundp s) "variable")
+                (t "unknown"))))
     (concat
-     (cond
-      ((commandp s)
-       (icon-tools-icon-str "command" :face 'icon-tools-purple))
-      ((macrop (symbol-function s))
-       (icon-tools-icon-str "macro" :face 'icon-tools-purple))
-      ((fboundp s)
-       (icon-tools-icon-str "function" :face 'icon-tools-cyan))
-      ((facep s)
-       (icon-tools-icon-str "color" :face s))
-      ((and (boundp s) (custom-variable-p s))
-       (icon-tools-icon-str "wrench" :face 'icon-tools-orange))
-      ((and (boundp s) (local-variable-if-set-p s))
-       (icon-tools-icon-str "variable-local" :face 'icon-tools-blue))
-      ((boundp s)
-       (icon-tools-icon-str "variable" :face 'icon-tools-blue))
-      (t
-       (icon-tools-icon-str "symbol" :face 'icon-tools-pink)))
+     (icon-tools-icon-for-symbol-kind kind)
      (make-string icon-tools-completion-icon-right-padding ?\s))))
 
 (defun icon-tools-completion-get-variable-icon (cand)
