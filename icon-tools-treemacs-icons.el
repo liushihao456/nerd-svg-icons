@@ -49,38 +49,38 @@
                        'display (make-string icon-tools-icon-width ?\s))))
       ;; repo
       (treemacs-create-icon
-       :icon (format "%s\t" (icon-tools-icon-str "repo" :face 'treemacs-term-node-face :scale 1.3))
+       :icon (format "%s\t" (icon-tools-icon-str "oct-repo" :face 'treemacs-term-node-face :scale 1.3))
        :fallback 'same-as-icon
        :extensions (root-open))
       (treemacs-create-icon
-       :icon (format "%s\t" (icon-tools-icon-str "repo" :face 'treemacs-term-node-face :scale 1.3))
+       :icon (format "%s\t" (icon-tools-icon-str "oct-repo" :face 'treemacs-term-node-face :scale 1.3))
        :fallback 'same-as-icon
        :extensions (root-closed))
 
       ;; folder
       (treemacs-create-icon
        :icon (format "%s%s\t"
-                     (icon-tools-icon-str "chevron-down" :face 'font-lock-doc-face)
-                     (icon-tools-icon-str "file-directory" :face 'font-lock-doc-face))
+                     (icon-tools-icon-str "oct-chevron_down" :face 'font-lock-doc-face)
+                     (icon-tools-icon-str "md-folder_open" :face 'font-lock-doc-face))
        :fallback 'same-as-icon
        :extensions (dir-open))
       (treemacs-create-icon
        :icon (format "%s%s\t"
-                     (icon-tools-icon-str "chevron-right" :face 'font-lock-doc-face)
-                     (icon-tools-icon-str "file-directory" :face 'font-lock-doc-face))
+                     (icon-tools-icon-str "oct-chevron_right" :face 'font-lock-doc-face)
+                     (icon-tools-icon-str "md-folder" :face 'font-lock-doc-face))
        :fallback 'same-as-icon
        :extensions (dir-closed))
 
       (treemacs-create-icon
        :icon (format "%s%s\t"
-                     (icon-tools-icon-str "chevron-down" :face 'font-lock-function-name-face)
-                     (icon-tools-icon-str "package" :face 'font-lock-function-name-face))
+                     (icon-tools-icon-str "oct-chevron_down" :face 'font-lock-function-name-face)
+                     (icon-tools-icon-str "cod-package" :face 'font-lock-function-name-face))
        :fallback 'same-as-icon
        :extensions (tag-open))
       (treemacs-create-icon
        :icon (format "%s%s\t"
-                     (icon-tools-icon-str "chevron-right" :face 'font-lock-function-name-face)
-                     (icon-tools-icon-str "package" :face 'font-lock-function-name-face))
+                     (icon-tools-icon-str "oct-chevron_right" :face 'font-lock-function-name-face)
+                     (icon-tools-icon-str "cod-package" :face 'font-lock-function-name-face))
        :fallback 'same-as-icon
        :extensions (tag-closed))
 
@@ -88,21 +88,21 @@
       (treemacs-create-icon
        :icon (format "%s%s\t"
                      indent-str
-                     (icon-tools-icon-str "tag" :face 'icon-tools-purple))
+                     (icon-tools-icon-str "fa-tag" :face 'icon-tools-purple))
        :fallback 'same-as-icon
        :extensions (tag-leaf))
 
       ;; errors
       (treemacs-create-icon
-       :icon (format "%s\t" (icon-tools-icon-str "error" :face 'font-lock-warning-face))
+       :icon (format "%s\t" (icon-tools-icon-str "cod-error" :face 'font-lock-warning-face))
        :fallback 'same-as-icon
        :extensions (error))
       (treemacs-create-icon
-       :icon (format "%s\t" (icon-tools-icon-str "warning" :face 'icon-tools-yellow))
+       :icon (format "%s\t" (icon-tools-icon-str "cod-warning" :face 'icon-tools-yellow))
        :fallback 'same-as-icon
        :extensions (warning))
       (treemacs-create-icon
-       :icon (format "%s\t" (icon-tools-icon-str "info" :face 'icon-tools-green))
+       :icon (format "%s\t" (icon-tools-icon-str "cod-info" :face 'icon-tools-green))
        :fallback 'same-as-icon
        :extensions (info))
 
@@ -128,7 +128,7 @@
       (treemacs-create-icon
        :icon (format "%s%s\t"
                      indent-str
-                     (icon-tools-icon-str "file" :face 'icon-tools-cyan))
+                     (icon-tools-icon-str "md-file" :face 'icon-tools-cyan))
        :fallback 'same-as-icon
        :extensions (fallback))))
 

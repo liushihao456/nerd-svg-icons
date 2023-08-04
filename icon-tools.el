@@ -280,7 +280,7 @@ ICON-NAME is a string in the form of FAMILY-ICON, e.g. fa-book.
 ARGS are additional plist arguments where properties FACE and SCALE are
 supported."
   (when-let ((glyph (icon-tools--get-nerd-icon-glyph icon-name)))
-    (propertize glyph 'face `(:foreground
+    (propertize (concat glyph " ") 'face `(:foreground
                               ,(face-attribute
                                 (or (plist-get args :face) 'default)
                                 :foreground)))
