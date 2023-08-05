@@ -1,11 +1,11 @@
-# nerd-icons for Emacs
+# nerd-svg-icons for Emacs
 ## GUI Emacs:
 ![Screenshot](./screenshot.png)
 
 ## Terminal Emacs (on macOS Terminal.app):
 ![Screenshot](./screenshot-terminal.png)
 
-nerd-icons makes inserting icons in Emacs graceful and painless. It uses SVG icons in GUI Emacs and [Nerd font](https://www.nerdfonts.com/) icons in Terminal Emacs.
+nerd-svg-icons makes inserting icons in Emacs graceful and painless. It uses SVG icons in GUI Emacs and [Nerd font](https://www.nerdfonts.com/) icons in Terminal Emacs.
 
 It is partially meant as an alternative to [`all-the-icons`](https://github.com/domtronn/all-the-icons.el) to provide better looking and experience.
 
@@ -30,28 +30,28 @@ It is partially meant as an alternative to [`all-the-icons`](https://github.com/
 First, clone the repo:
 
 ``` shell
-git clone --depth=1 https://github.com/liushihao456/nerd-icons.git
+git clone --depth=1 https://github.com/liushihao456/nerd-svg-icons.git
 ```
 
 Then load it:
 
 ``` elisp
-(add-to-list 'load-path "/path/to/nerd-icons/")
+(add-to-list 'load-path "/path/to/nerd-svg-icons/")
 
 ;; Minibuffer completion icons
-(require 'nerd-icons-completion)
-(nerd-icons-completion-mode t)
+(require 'nerd-svg-icons-completion)
+(nerd-svg-icons-completion-mode t)
 
 ;; Dired icons
-(require 'nerd-icons-dired)
-(add-hook 'dired-mode-hook 'nerd-icons-dired-mode)
+(require 'nerd-svg-icons-dired)
+(add-hook 'dired-mode-hook 'nerd-svg-icons-dired-mode)
 
 ;; Treemacs icons
-(require 'nerd-icons-treemacs-icons)
-(nerd-icons-treemacs-icons-config)
+(require 'nerd-svg-icons-treemacs-icons)
+(nerd-svg-icons-treemacs-icons-config)
 
 ;; Ibuffer icons
-(add-hook 'ibuffer-hook #'nerd-icons-ibuffer-mode)
+(add-hook 'ibuffer-hook #'nerd-svg-icons-ibuffer-mode)
 ```
 
 ## Basic usage
@@ -59,9 +59,9 @@ Then load it:
 To build an icon, just evaluate (for example):
 
 ``` elisp
-(nerd-icons-icon-str "repo")
+(nerd-svg-icons-icon-str "repo")
 ;; or
-(nerd-icons-icon-str "repo" :face 'nerd-icons-orange :scale 1.2)
+(nerd-svg-icons-icon-str "repo" :face 'nerd-svg-icons-orange :scale 1.2)
 ```
 
 It will return a string containing the icon that can be inserted.

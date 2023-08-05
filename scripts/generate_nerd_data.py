@@ -1,3 +1,6 @@
+"""
+This script is copied from https://github.com/rainstormstudio/nerd-icons.el
+"""
 import requests
 import os
 import shutil
@@ -12,7 +15,7 @@ nerd_fonts_generated_css_download_folder = "../tmp"
 nerd_fonts_data_folder = "../data"
 nerd_fonts_version = ""
 
-data_header = """;;; nerd-icons-data-{}.el --- glyphset {} -*- lexical-binding: t -*-
+data_header = """;;; nerd-svg-icons-data-{}.el --- glyphset {} -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Hongyu Ding <rainstormstudio@yahoo.com>
 
@@ -40,7 +43,7 @@ data_header = """;;; nerd-icons-data-{}.el --- glyphset {} -*- lexical-binding: 
 ;;; Code:
 
 """
-data_footer = """;;; nerd-icons-data-{}.el ends here"""
+data_footer = """;;; nerd-svg-icons-data-{}.el ends here"""
 
 def download_nerd_fonts_generated_css_file():
     if not os.path.exists(nerd_fonts_generated_css_download_folder):
@@ -68,15 +71,15 @@ def matches_from_prefix(prefix):
         return matches
 
 def generate(folder, glyphset, prefixes):
-    output = open(folder + '/nerd-icons-data-' + glyphset + '.el', 'w')
+    output = open(folder + '/nerd-svg-icons-data-' + glyphset + '.el', 'w')
     output.write(data_header.format(glyphset, glyphset, glyphset, nerd_fonts_version))
-    output.write('(defvar nerd-icons/' + glyphset + '-alist\n  \'(\n')
+    output.write('(defvar nerd-svg-icons/' + glyphset + '-alist\n  \'(\n')
     for prefix in prefixes:
         matches = matches_from_prefix(prefix)
         for match in matches:
             output.write('    ' + match + '\n')
     output.write('    ))\n\n')
-    output.write('(provide \'nerd-icons-data-' + glyphset + ')\n')
+    output.write('(provide \'nerd-svg-icons-data-' + glyphset + ')\n')
     output.write(data_footer.format(glyphset))
 
 download_nerd_fonts_generated_css_file()

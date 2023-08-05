@@ -1,4 +1,4 @@
-;;; nerd-icons-data-faicon.el --- glyphset faicon -*- lexical-binding: t -*-
+;;; nerd-svg-icons-data-faicon.el --- glyphset faicon -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Hongyu Ding <rainstormstudio@yahoo.com>
 
@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(defvar nerd-icons/faicon-alist
+(defvar nerd-svg-icons/faicon-alist
   '(
     ("nf-fa-500px" . "\xf26e")
     ("nf-fa-address_book" . "\xf2b9")
@@ -985,5 +985,5 @@
     ("nf-fae-xbox" . "\xe29d")
     ))
 
-(provide 'nerd-icons-data-faicon)
-;;; nerd-icons-data-faicon.el ends here
+(provide 'nerd-svg-icons-data-faicon)
+;;; nerd-svg-icons-data-faicon.el ends here

@@ -1,4 +1,4 @@
-;;; nerd-icons-data-wicon.el --- glyphset wicon -*- lexical-binding: t -*-
+;;; nerd-svg-icons-data-wicon.el --- glyphset wicon -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Hongyu Ding <rainstormstudio@yahoo.com>
 
@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(defvar nerd-icons/wicon-alist
+(defvar nerd-svg-icons/wicon-alist
   '(
     ("nf-weather-alien" . "\xe36e")
     ("nf-weather-aliens" . "\xe345")
@@ -257,5 +257,5 @@
     ("nf-weather-windy" . "\xe31e")
     ))
 
-(provide 'nerd-icons-data-wicon)
-;;; nerd-icons-data-wicon.el ends here
+(provide 'nerd-svg-icons-data-wicon)
+;;; nerd-svg-icons-data-wicon.el ends here

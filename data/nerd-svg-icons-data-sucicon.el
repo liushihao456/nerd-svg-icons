@@ -1,4 +1,4 @@
-;;; nerd-icons-data-sucicon.el --- glyphset sucicon -*- lexical-binding: t -*-
+;;; nerd-svg-icons-data-sucicon.el --- glyphset sucicon -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Hongyu Ding <rainstormstudio@yahoo.com>
 
@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(defvar nerd-icons/sucicon-alist
+(defvar nerd-svg-icons/sucicon-alist
   '(
     ("nf-custom-asm" . "\xe6ab")
     ("nf-custom-c" . "\xe61e")
@@ -224,5 +224,5 @@
     ("nf-seti-zip" . "\xe6aa")
     ))
 
-(provide 'nerd-icons-data-sucicon)
-;;; nerd-icons-data-sucicon.el ends here
+(provide 'nerd-svg-icons-data-sucicon)
+;;; nerd-svg-icons-data-sucicon.el ends here

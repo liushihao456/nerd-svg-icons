@@ -1,4 +1,4 @@
-;;; nerd-icons-data-octicon.el --- glyphset octicon -*- lexical-binding: t -*-
+;;; nerd-svg-icons-data-octicon.el --- glyphset octicon -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Hongyu Ding <rainstormstudio@yahoo.com>
 
@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(defvar nerd-icons/octicon-alist
+(defvar nerd-svg-icons/octicon-alist
   '(
     ("nf-oct-accessibility" . "\xf406")
     ("nf-oct-accessibility_inset" . "\xf40b")
@@ -339,5 +339,5 @@
     ("nf-oct-zoom_out" . "\xf532")
     ))
 
-(provide 'nerd-icons-data-octicon)
-;;; nerd-icons-data-octicon.el ends here
+(provide 'nerd-svg-icons-data-octicon)
+;;; nerd-svg-icons-data-octicon.el ends here

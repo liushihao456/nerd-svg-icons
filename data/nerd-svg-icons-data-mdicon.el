@@ -1,4 +1,4 @@
-;;; nerd-icons-data-mdicon.el --- glyphset mdicon -*- lexical-binding: t -*-
+;;; nerd-svg-icons-data-mdicon.el --- glyphset mdicon -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Hongyu Ding <rainstormstudio@yahoo.com>
 
@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(defvar nerd-icons/mdicon-alist
+(defvar nerd-svg-icons/mdicon-alist
   '(
     ("nf-md-ab_testing" . "\xf01c9")
     ("nf-md-abacus" . "\xf16e0")
@@ -6909,5 +6909,5 @@
     ("nf-md-zodiac_virgo" . "\xf0a88")
     ))
 
-(provide 'nerd-icons-data-mdicon)
-;;; nerd-icons-data-mdicon.el ends here
+(provide 'nerd-svg-icons-data-mdicon)
+;;; nerd-svg-icons-data-mdicon.el ends here

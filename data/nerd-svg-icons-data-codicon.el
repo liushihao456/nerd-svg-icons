@@ -1,4 +1,4 @@
-;;; nerd-icons-data-codicon.el --- glyphset codicon -*- lexical-binding: t -*-
+;;; nerd-svg-icons-data-codicon.el --- glyphset codicon -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Hongyu Ding <rainstormstudio@yahoo.com>
 
@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(defvar nerd-icons/codicon-alist
+(defvar nerd-svg-icons/codicon-alist
   '(
     ("nf-cod-account" . "\xeb99")
     ("nf-cod-activate_breakpoints" . "\xea97")
@@ -416,5 +416,5 @@
     ("nf-cod-zoom_out" . "\xeb82")
     ))
 
-(provide 'nerd-icons-data-codicon)
-;;; nerd-icons-data-codicon.el ends here
+(provide 'nerd-svg-icons-data-codicon)
+;;; nerd-svg-icons-data-codicon.el ends here

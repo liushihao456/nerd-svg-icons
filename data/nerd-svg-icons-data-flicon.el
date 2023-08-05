@@ -1,4 +1,4 @@
-;;; nerd-icons-data-flicon.el --- glyphset flicon -*- lexical-binding: t -*-
+;;; nerd-svg-icons-data-flicon.el --- glyphset flicon -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Hongyu Ding <rainstormstudio@yahoo.com>
 
@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(defvar nerd-icons/flicon-alist
+(defvar nerd-svg-icons/flicon-alist
   '(
     ("nf-linux-almalinux" . "\xf31d")
     ("nf-linux-alpine" . "\xf300")
@@ -77,5 +77,5 @@
     ("nf-linux-zorin" . "\xf32f")
     ))
 
-(provide 'nerd-icons-data-flicon)
-;;; nerd-icons-data-flicon.el ends here
+(provide 'nerd-svg-icons-data-flicon)
+;;; nerd-svg-icons-data-flicon.el ends here

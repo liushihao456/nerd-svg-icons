@@ -1,4 +1,4 @@
-;;; nerd-icons-data-devicon.el --- glyphset devicon -*- lexical-binding: t -*-
+;;; nerd-svg-icons-data-devicon.el --- glyphset devicon -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Hongyu Ding <rainstormstudio@yahoo.com>
 
@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(defvar nerd-icons/devicon-alist
+(defvar nerd-svg-icons/devicon-alist
   '(
     ("nf-dev-android" . "\xe70e")
     ("nf-dev-angular" . "\xe753")
@@ -220,5 +220,5 @@
     ("nf-dev-zend" . "\xe778")
     ))
 
-(provide 'nerd-icons-data-devicon)
-;;; nerd-icons-data-devicon.el ends here
+(provide 'nerd-svg-icons-data-devicon)
+;;; nerd-svg-icons-data-devicon.el ends here

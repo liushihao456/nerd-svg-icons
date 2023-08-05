@@ -1,4 +1,4 @@
-;;; nerd-icons-treemacs-icons.el --- Treemacs theme with nerd-icons  -*- lexical-binding: t; -*-
+;;; nerd-svg-icons-treemacs-icons.el --- Treemacs theme with nerd-svg-icons  -*- lexical-binding: t; -*-
 
 ;; Author: Shihao Liu
 ;; Keywords: treemacs icon
@@ -34,53 +34,53 @@
 ;; --------------------------------------
 
 ;;; Code:
-(require 'nerd-icons)
+(require 'nerd-svg-icons)
 (require 'treemacs)
 
 (with-eval-after-load 'treemacs
-  (treemacs-create-theme "nerd-icons-treemacs-icons"
+  (treemacs-create-theme "nerd-svg-icons-treemacs-icons"
     :config
     ;; The leading spaces must be propertized, as treemacs will wrap the icon string
     ;; as property around a blank string, shadowing the second-level svg property.
     ;;
     ;; See `treemacs-create-icon'.
     (let ((indent-str (propertize
-                       (make-string nerd-icons-icon-width ?\s)
-                       'display (make-string nerd-icons-icon-width ?\s))))
+                       (make-string nerd-svg-icons-icon-width ?\s)
+                       'display (make-string nerd-svg-icons-icon-width ?\s))))
       ;; repo
       (treemacs-create-icon
-       :icon (format "%s\t" (nerd-icons-icon-str "oct-repo" :face 'treemacs-term-node-face :scale 1.3))
+       :icon (format "%s\t" (nerd-svg-icons-icon-str "oct-repo" :face 'treemacs-term-node-face :scale 1.3))
        :fallback 'same-as-icon
        :extensions (root-open))
       (treemacs-create-icon
-       :icon (format "%s\t" (nerd-icons-icon-str "oct-repo" :face 'treemacs-term-node-face :scale 1.3))
+       :icon (format "%s\t" (nerd-svg-icons-icon-str "oct-repo" :face 'treemacs-term-node-face :scale 1.3))
        :fallback 'same-as-icon
        :extensions (root-closed))
 
       ;; folder
       (treemacs-create-icon
        :icon (format "%s%s\t"
-                     (nerd-icons-icon-str "oct-chevron_down" :face 'font-lock-doc-face)
-                     (nerd-icons-icon-str "md-folder_open" :face 'font-lock-doc-face))
+                     (nerd-svg-icons-icon-str "oct-chevron_down" :face 'font-lock-doc-face)
+                     (nerd-svg-icons-icon-str "md-folder_open" :face 'font-lock-doc-face))
        :fallback 'same-as-icon
        :extensions (dir-open))
       (treemacs-create-icon
        :icon (format "%s%s\t"
-                     (nerd-icons-icon-str "oct-chevron_right" :face 'font-lock-doc-face)
-                     (nerd-icons-icon-str "md-folder" :face 'font-lock-doc-face))
+                     (nerd-svg-icons-icon-str "oct-chevron_right" :face 'font-lock-doc-face)
+                     (nerd-svg-icons-icon-str "md-folder" :face 'font-lock-doc-face))
        :fallback 'same-as-icon
        :extensions (dir-closed))
 
       (treemacs-create-icon
        :icon (format "%s%s\t"
-                     (nerd-icons-icon-str "oct-chevron_down" :face 'font-lock-function-name-face)
-                     (nerd-icons-icon-str "cod-package" :face 'font-lock-function-name-face))
+                     (nerd-svg-icons-icon-str "oct-chevron_down" :face 'font-lock-function-name-face)
+                     (nerd-svg-icons-icon-str "cod-package" :face 'font-lock-function-name-face))
        :fallback 'same-as-icon
        :extensions (tag-open))
       (treemacs-create-icon
        :icon (format "%s%s\t"
-                     (nerd-icons-icon-str "oct-chevron_right" :face 'font-lock-function-name-face)
-                     (nerd-icons-icon-str "cod-package" :face 'font-lock-function-name-face))
+                     (nerd-svg-icons-icon-str "oct-chevron_right" :face 'font-lock-function-name-face)
+                     (nerd-svg-icons-icon-str "cod-package" :face 'font-lock-function-name-face))
        :fallback 'same-as-icon
        :extensions (tag-closed))
 
@@ -88,34 +88,34 @@
       (treemacs-create-icon
        :icon (format "%s%s\t"
                      indent-str
-                     (nerd-icons-icon-str "fa-tag" :face 'nerd-icons-purple))
+                     (nerd-svg-icons-icon-str "fa-tag" :face 'nerd-svg-icons-purple))
        :fallback 'same-as-icon
        :extensions (tag-leaf))
 
       ;; errors
       (treemacs-create-icon
-       :icon (format "%s\t" (nerd-icons-icon-str "cod-error" :face 'font-lock-warning-face))
+       :icon (format "%s\t" (nerd-svg-icons-icon-str "cod-error" :face 'font-lock-warning-face))
        :fallback 'same-as-icon
        :extensions (error))
       (treemacs-create-icon
-       :icon (format "%s\t" (nerd-icons-icon-str "cod-warning" :face 'nerd-icons-yellow))
+       :icon (format "%s\t" (nerd-svg-icons-icon-str "cod-warning" :face 'nerd-svg-icons-yellow))
        :fallback 'same-as-icon
        :extensions (warning))
       (treemacs-create-icon
-       :icon (format "%s\t" (nerd-icons-icon-str "cod-info" :face 'nerd-icons-green))
+       :icon (format "%s\t" (nerd-svg-icons-icon-str "cod-info" :face 'nerd-svg-icons-green))
        :fallback 'same-as-icon
        :extensions (info))
 
-      (dolist (item nerd-icons-extension-icon-alist)
+      (dolist (item nerd-svg-icons-extension-icon-alist)
         (let* ((extension (car item))
                (icon-name (cadr item))
                (face (caddr item))
                (gui-icon (format "%s%s\t"
                                  indent-str
-                                 (nerd-icons-icon-str icon-name :face face)))
+                                 (nerd-svg-icons-icon-str icon-name :face face)))
                (tui-icon (format "%s%s\t"
                                  indent-str
-                                 (nerd-icons-nerd-icon-str icon-name :face face))))
+                                 (nerd-svg-icons-nerd-icon-str icon-name :face face))))
           (let* ((icon-pair (cons gui-icon tui-icon))
                  (gui-icons (treemacs-theme->gui-icons treemacs--current-theme))
                  (tui-icons (treemacs-theme->tui-icons treemacs--current-theme))
@@ -128,16 +128,16 @@
       (treemacs-create-icon
        :icon (format "%s%s\t"
                      indent-str
-                     (nerd-icons-icon-str "oct-file" :face 'nerd-icons-cyan))
+                     (nerd-svg-icons-icon-str "oct-file" :face 'nerd-svg-icons-cyan))
        :fallback 'same-as-icon
        :extensions (fallback))))
 
-  (treemacs-load-theme "nerd-icons-treemacs-icons"))
+  (treemacs-load-theme "nerd-svg-icons-treemacs-icons"))
 
 ;;;###autoload
-(defun nerd-icons-treemacs-icons-config ()
-  "Install nerd-icons-treemacs-icons theme configuration.")
+(defun nerd-svg-icons-treemacs-icons-config ()
+  "Install nerd-svg-icons-treemacs-icons theme configuration.")
 
-(provide 'nerd-icons-treemacs-icons)
+(provide 'nerd-svg-icons-treemacs-icons)
 
-;;; nerd-icons-treemacs-icons.el ends here
+;;; nerd-svg-icons-treemacs-icons.el ends here

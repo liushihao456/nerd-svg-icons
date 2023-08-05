@@ -1,4 +1,4 @@
-;;; nerd-icons-data-nerd.el --- nerd-icons nerd icon data  -*- lexical-binding: t; -*-
+;;; nerd-svg-icons-data-nerd.el --- nerd-svg-icons nerd icon data  -*- lexical-binding: t; -*-
 
 ;; Author: Shihao Liu
 ;; Keywords: treemacs nerd icon
@@ -30,18 +30,18 @@
 
 ;;; Code:
 
-(require 'nerd-icons-data-ipsicon   "./data/nerd-icons-data-ipsicon")
-(require 'nerd-icons-data-pomicon   "./data/nerd-icons-data-pomicon")
-(require 'nerd-icons-data-octicon   "./data/nerd-icons-data-octicon")
-(require 'nerd-icons-data-powerline "./data/nerd-icons-data-powerline")
-(require 'nerd-icons-data-faicon    "./data/nerd-icons-data-faicon")
-(require 'nerd-icons-data-wicon     "./data/nerd-icons-data-wicon")
-(require 'nerd-icons-data-sucicon   "./data/nerd-icons-data-sucicon")
-(require 'nerd-icons-data-devicon   "./data/nerd-icons-data-devicon")
-(require 'nerd-icons-data-codicon   "./data/nerd-icons-data-codicon")
-(require 'nerd-icons-data-flicon    "./data/nerd-icons-data-flicon")
-(require 'nerd-icons-data-mdicon    "./data/nerd-icons-data-mdicon")
+(require 'nerd-svg-icons-data-ipsicon   "./data/nerd-svg-icons-data-ipsicon")
+(require 'nerd-svg-icons-data-pomicon   "./data/nerd-svg-icons-data-pomicon")
+(require 'nerd-svg-icons-data-octicon   "./data/nerd-svg-icons-data-octicon")
+(require 'nerd-svg-icons-data-powerline "./data/nerd-svg-icons-data-powerline")
+(require 'nerd-svg-icons-data-faicon    "./data/nerd-svg-icons-data-faicon")
+(require 'nerd-svg-icons-data-wicon     "./data/nerd-svg-icons-data-wicon")
+(require 'nerd-svg-icons-data-sucicon   "./data/nerd-svg-icons-data-sucicon")
+(require 'nerd-svg-icons-data-devicon   "./data/nerd-svg-icons-data-devicon")
+(require 'nerd-svg-icons-data-codicon   "./data/nerd-svg-icons-data-codicon")
+(require 'nerd-svg-icons-data-flicon    "./data/nerd-svg-icons-data-flicon")
+(require 'nerd-svg-icons-data-mdicon    "./data/nerd-svg-icons-data-mdicon")
 
-(provide 'nerd-icons-data-nerd)
+(provide 'nerd-svg-icons-data-nerd)
 
-;; nerd-icons-data-nerd.el ends here
+;; nerd-svg-icons-data-nerd.el ends here

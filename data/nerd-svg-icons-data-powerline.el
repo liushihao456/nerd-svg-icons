@@ -1,4 +1,4 @@
-;;; nerd-icons-data-powerline.el --- glyphset powerline -*- lexical-binding: t -*-
+;;; nerd-svg-icons-data-powerline.el --- glyphset powerline -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2023 Hongyu Ding <rainstormstudio@yahoo.com>
 
@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(defvar nerd-icons/powerline-alist
+(defvar nerd-svg-icons/powerline-alist
   '(
     ("nf-pl-branch" . "\xe0a0")
     ("nf-pl-current_line" . "\xe0a1")
@@ -70,5 +70,5 @@
     ("nf-ple-upper_right_triangle" . "\xe0be")
     ))
 
-(provide 'nerd-icons-data-powerline)
-;;; nerd-icons-data-powerline.el ends here
+(provide 'nerd-svg-icons-data-powerline)
+;;; nerd-svg-icons-data-powerline.el ends here
