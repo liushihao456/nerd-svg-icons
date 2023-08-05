@@ -56,23 +56,24 @@ Then load it:
 
 ## Basic usage
 
-To build an icon, just evaluate (for example):
+To get an icon as str, just evaluate (for example):
 
 ``` elisp
-(nerd-svg-icons-icon-str "repo")
+(nerd-svg-icons-icon-str "oct-repo")
 ;; or
-(nerd-svg-icons-icon-str "repo" :face 'nerd-svg-icons-orange :scale 1.2)
+(nerd-svg-icons-icon-str "oct-repo" :face 'nerd-svg-icons-orange :scale 1.2)
 ```
 
 It will return a string containing the icon that can be inserted.
 
 ## Acknowledgements
 
-This package is based largely on these excellent projects:
+This package is inspired largely by these excellent projects:
 
 * [`all-the-icons`](https://github.com/domtronn/all-the-icons.el)
 * [`all-the-icons-dired`](https://github.com/jtbm37/all-the-icons-dired)
 * [`all-the-icons-completion`](https://github.com/iyefrat/all-the-icons-completion)
 * [`doom-themes-treemacs`](https://github.com/doomemacs/themes)
 * [`emacs-svg-icon`](https://github.com/rougier/emacs-svg-icon)
+* [`nerd-icons.el`](https://github.com/rainstormstudio/nerd-icons.el)
 
