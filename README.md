@@ -63,7 +63,7 @@ To build an icon, just evaluate (for example):
 
 It will return a string containing the icon that can be inserted.
 
-## Special thanks
+## Acknowledgements
 
 This package is based largely on these excellent projects:
 
