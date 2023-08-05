@@ -1201,7 +1201,7 @@ ARGS should be a plist containining `:face' or `:scale'."
     (if match
         (apply #'nerd-icons-icon-str (cadr match)
                (append args `(:face ,(caddr match))))
-      (apply #'nerd-icons-icon-str "md-text_box_edit"
+      (apply #'nerd-icons-icon-str "md-cogs"
              (append args '(:face nerd-icons-purple))))))
 
 ;;;###autoload

@@ -55,7 +55,7 @@
     (bookmark . nerd-icons-completion-get-bookmark-icon)
     (symbol . nerd-icons-completion-get-symbol-icon)
     (function . nerd-icons-completion-get-symbol-icon)
-    (variable . nerd-icons-completion-get-variable-icon)
+    (variable . nerd-icons-completion-get-symbol-icon)
     (imenu . nerd-icons-completion-get-imenu-icon)
     (library . nerd-icons-completion-get-package-icon)
     (package . nerd-icons-completion-get-package-icon)
@@ -121,49 +121,34 @@
      (nerd-icons-icon-for-symbol-kind kind)
      (make-string nerd-icons-completion-icon-right-padding ?\s))))
 
-(defun nerd-icons-completion-get-variable-icon (cand)
-  "Return the icon for the candidate CAND of completion category variable."
-  (let ((s (intern-soft cand)))
-    (concat
-     (cond
-      ((and (boundp s) (custom-variable-p s))
-       (nerd-icons-icon-str "wrench" :face 'nerd-icons-orange))
-      ((and (boundp s) (local-variable-if-set-p s))
-       (nerd-icons-icon-str "variable-local" :face 'nerd-icons-blue))
-      (t
-       (nerd-icons-icon-str "variable" :face 'nerd-icons-blue)))
-     (make-string nerd-icons-completion-icon-right-padding ?\s))))
-
 (defun nerd-icons-completion-get-imenu-icon (cand)
   "Return the icon for the candidate CAND of completion category imenu."
   (concat
-   (if-let (kind (get-text-property 0 'kind cand))
-       (nerd-icons-icon-for-symbol-kind kind)
-     (nerd-icons-icon-str "tag" :face 'nerd-icons-lpurple))
+   (nerd-icons-icon-for-symbol-kind (get-text-property 0 'kind cand))
    (make-string nerd-icons-completion-icon-right-padding ?\s)))
 
 (defun nerd-icons-completion-get-package-icon (cand)
   "Return the icon for the candidate CAND of completion category package."
   (concat
-   (nerd-icons-icon-str "package" :face 'nerd-icons-lpurple)
+   (nerd-icons-icon-str "cod-package" :face 'nerd-icons-lpurple)
    (make-string nerd-icons-completion-icon-right-padding ?\s)))
 
 (defun nerd-icons-completion-get-embark-keybinding-icon (cand)
   "Return the icon for the candidate CAND of completion category embark-keybinding."
   (concat
-   (nerd-icons-icon-str "key" :face 'nerd-icons-cyan)
+   (nerd-icons-icon-str "cod-key" :face 'nerd-icons-cyan)
    (make-string nerd-icons-completion-icon-right-padding ?\s)))
 
 (defun nerd-icons-completion-get-customize-group-icon (cand)
   "Return the icon for the candidate CAND of completion category `customize-group'."
   (concat
-   (nerd-icons-icon-str "wrench" :face 'nerd-icons-orange)
+   (nerd-icons-icon-str "seti-settings" :face 'nerd-icons-orange)
    (make-string nerd-icons-completion-icon-right-padding ?\s)))
 
 (defun nerd-icons-completion-get-minor-mode-icon (cand)
   "Return the icon for the candidate CAND of completion category minor-mode."
   (concat
-   (nerd-icons-icon-str "gear" :face 'nerd-icons-dcyan)
+   (nerd-icons-icon-str "md-cogs" :face 'nerd-icons-dcyan)
    (make-string nerd-icons-completion-icon-right-padding ?\s)))
 
 (defun nerd-icons-completion-completion-metadata-get (orig metadata prop)
