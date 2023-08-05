@@ -49,6 +49,9 @@ Then load it:
 ;; Treemacs icons
 (require 'nerd-icons-treemacs-icons)
 (nerd-icons-treemacs-icons-config)
+
+;; Ibuffer icons
+(add-hook 'ibuffer-hook #'nerd-icons-ibuffer-mode)
 ```
 
 ## Basic usage
