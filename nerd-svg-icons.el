@@ -213,7 +213,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
         ;; Insert all parsed nodes, replacing colors with fg-color
         (nerd-svg-icons--svg-icon-recursively-copy-children svg (car root) fg-color)
 
-        (apply #'nerd-svg-icons-svg-icon-cache-add (svg-image svg :ascent 'center :scale 1)
+        (apply #'nerd-svg-icons-svg-icon-cache-add (svg-image svg :ascent 80 :scale 1)
                icon-name args)))))
 
 (defun nerd-svg-icons--get-nerd-icon-glyph (icon-name)
@@ -793,8 +793,8 @@ supported."
     ("bookmarks"                "fa-bookmark"       nerd-svg-icons-orange)
     ("bookmark"                 "fa-bookmark"        nerd-svg-icons-orange)
 
-    ("^\\*scratch\\*$"          "fa-sticky_note"     nerd-svg-icons-lyellow)
-    ("^\\*scratch.*"            "fa-sticky_note"     nerd-svg-icons-yellow)
+    ("^\\*scratch\\*$"          "md-sticker_text"     nerd-svg-icons-lyellow)
+    ("^\\*scratch.*"            "md-sticker_text"     nerd-svg-icons-yellow)
     ("^\\*new-tab\\*$"          "fa-star"            nerd-svg-icons-cyan)
 
     ("\\.git"                   "seti-git"             nerd-svg-icons-yellow)
@@ -1087,7 +1087,7 @@ supported."
     ("property"     "cod-symbol_property"           nerd-svg-icons-blue)
 
     ;; Markdown
-    ("chapter"      "fa-sticky_note"               nerd-svg-icons-yellow)
+    ("chapter"      "md-sticker_text"               nerd-svg-icons-yellow)
     ("section"      "md-format_section"                   nerd-svg-icons-lorange 0.9)
     ("subsection"   "md-format_section"                   nerd-svg-icons-orange 0.8)
 
