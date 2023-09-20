@@ -1076,7 +1076,7 @@ supported."
     ("group"        "cod-package"                   nerd-svg-icons-lblue 0.9)
     ("error"        "cod-error"                     nerd-svg-icons-lblue)
     ("custom"       "seti-settings"                  nerd-svg-icons-orange)
-    ("face"         "fae-palette_color"                     nerd-svg-icons-red)
+    ("face"         "md-palette"                     nerd-svg-icons-red)
     ("const"        "cod-symbol_constant"           nerd-svg-icons-lgreen)
     ("symbol"       "cod-symbol_key"             nerd-svg-icons-dyellow 0.9)
     ("alias"        "cod-references"                nerd-svg-icons-lmaroon 0.8)
