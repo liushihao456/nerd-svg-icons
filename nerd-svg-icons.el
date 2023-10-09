@@ -591,6 +591,7 @@ supported."
     ("org"                  "custom-orgmode"              nerd-svg-icons-lgreen)
     ("pps"                  "md-microsoft_powerpoint"  nerd-svg-icons-orange)
     ("ppt"                  "md-microsoft_powerpoint"  nerd-svg-icons-orange)
+    ("pptx"                 "md-microsoft_powerpoint"  nerd-svg-icons-orange)
     ("pptsx"                "md-microsoft_powerpoint"  nerd-svg-icons-orange)
     ("ppttx"                "md-microsoft_powerpoint"  nerd-svg-icons-orange)
     ("knt"                  "md-microsoft_powerpoint"  nerd-svg-icons-cyan)
