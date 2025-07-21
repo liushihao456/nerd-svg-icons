@@ -263,11 +263,8 @@ ICON-NAME is a string in the form of FAMILY-ICON, e.g. fa-book.
 ARGS are additional plist arguments where properties FACE and SCALE are
 supported."
   (when-let ((glyph (nerd-svg-icons--get-nerd-icon-glyph icon-name)))
-    (propertize (concat glyph " ") 'face `(:foreground
-                              ,(face-attribute
-                                (or (plist-get args :face) 'default)
-                                :foreground)))
-    ))
+    (propertize (concat glyph (make-string (1- nerd-svg-icons-icon-width) ?\s)) 'face
+                (or (plist-get args :face) 'default))))
 
 (defun nerd-svg-icons-icon-str (icon-name &rest args)
   (if (display-graphic-p)
