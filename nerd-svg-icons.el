@@ -52,19 +52,21 @@
   (make-hash-table :test 'equal :size 250))
 
 (defun nerd-svg-icons-svg-icon-cache-add (icon icon-name &rest args)
-  (puthash (format "%s-%s-%s-%d-%d"
+  (puthash (format "%s-%s-%s-%s-%d-%d"
                    icon-name
                    (symbol-name (or (plist-get args :face) 'default))
                    (or (plist-get args :scale) 1.0)
+                   (or (plist-get args :width) nerd-svg-icons-icon-width)
                    (window-font-width)
                    (window-font-height))
            icon nerd-svg-icons-svg-icon-cache))
 
 (defun nerd-svg-icons-svg-icon-cache-get (icon-name &rest args)
-  (gethash (format "%s-%s-%s-%d-%d"
+  (gethash (format "%s-%s-%s-%s-%d-%d"
                    icon-name
                    (symbol-name (or (plist-get args :face) 'default))
                    (or (plist-get args :scale) 1.0)
+                   (or (plist-get args :width) nerd-svg-icons-icon-width)
                    (window-font-width)
                    (window-font-height))
            nerd-svg-icons-svg-icon-cache))
@@ -113,7 +115,7 @@ If COLOR-NAME is unknown to Emacs, then return COLOR-NAME as-is."
   "Alist that specifies the extra scaling factors for icons on top of base scale.
 Each element is in the form (ICON-NAME . SCALE-FACTOR).")
 
-(defvar nerd-svg-icons-svg-icon-base-scale 0.9)
+(defvar nerd-svg-icons-svg-icon-base-scale 0.8)
 
 (defun nerd-svg-icons--svg-icon-get-viewbox-multiplier (icon-name)
   (let ((cell (assoc icon-name nerd-svg-icons-svg-icon-scale-alist)))
@@ -162,14 +164,15 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
              ;; Set icon size (in pixels) to `nerd-svg-icons-icon-width'x1 characters
              (svg-width  (* (window-font-width) nerd-svg-icons-icon-width))
 
+             (svg-height (window-font-height))
+
              ;; Use 2 * (`window-font-width') instead, because on Windows, if
              ;; `window-font-height' returns value larger than 2 *
              ;; (`window-font-width'), the icon's height will actually be higher
              ;; than the original line height (which seems to be 2 *
              ;; (`window-font-width') no matter what `window-font-height'
              ;; returns).
-             ;; ;; (svg-height (window-font-height)
-             (svg-height (* (window-font-width) 2))
+             ;; (svg-height (* (window-font-width) 2))
 
              ;; Scale by zooming in/out the svg viewbox
              (multiplier (if scale
@@ -193,13 +196,13 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
                             (when (not (eq fg-color 'unspecified)) fg-color)
                             (face-attribute 'default :foreground))))
              ;; Use only transparent background for now
-             (bg-color "transparent")
-             ;; (bg-color (nerd-svg-icons--svg-icon-get-face-attribute-deep face :background))
-             ;; (bg-color (nerd-svg-icons--svg-icon-emacs-color-to-svg-color
-             ;;            (or (when (facep bg-color)
-             ;;                  (face-background bg-color nil t))
-             ;;                (when (not (eq bg-color 'unspecified)) bg-color)
-             ;;                "transparent")))
+             ;; (bg-color "transparent")
+             (bg-color (nerd-svg-icons--svg-icon-get-face-attribute-deep face :background))
+             (bg-color (nerd-svg-icons--svg-icon-emacs-color-to-svg-color
+                        (or (when (facep bg-color)
+                              (face-background bg-color nil t))
+                            (when (not (eq bg-color 'unspecified)) bg-color)
+                            "transparent")))
 
              (svg (svg-create svg-width svg-height
                               :viewBox svg-viewbox
@@ -207,8 +210,7 @@ Icon is drawn with the foreground of FACE and scaled with SCALE."
                               :fill fg-color)))
 
         (unless (equal bg-color "transparent")
-          (svg-rectangle svg view-x view-y view-width view-height
-                         :fill bg-color))
+          (svg-rectangle svg "-50%" "-50%" "200%" "200%" :fill bg-color))
 
         ;; Insert all parsed nodes, replacing colors with fg-color
         (nerd-svg-icons--svg-icon-recursively-copy-children svg (car root) fg-color)
@@ -591,7 +593,6 @@ supported."
     ("org"                  "custom-orgmode"              nerd-svg-icons-lgreen)
     ("pps"                  "md-microsoft_powerpoint"  nerd-svg-icons-orange)
     ("ppt"                  "md-microsoft_powerpoint"  nerd-svg-icons-orange)
-    ("pptx"                 "md-microsoft_powerpoint"  nerd-svg-icons-orange)
     ("pptsx"                "md-microsoft_powerpoint"  nerd-svg-icons-orange)
     ("ppttx"                "md-microsoft_powerpoint"  nerd-svg-icons-orange)
     ("knt"                  "md-microsoft_powerpoint"  nerd-svg-icons-cyan)
