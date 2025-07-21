@@ -264,7 +264,8 @@ ARGS are additional plist arguments where properties FACE and SCALE are
 supported."
   (when-let ((glyph (nerd-svg-icons--get-nerd-icon-glyph icon-name)))
     (propertize (concat glyph (make-string (1- nerd-svg-icons-icon-width) ?\s)) 'face
-                (or (plist-get args :face) 'default))))
+                (or (plist-get args :face)
+                    `(:foreground ,(face-attribute 'default :foreground))))))
 
 (defun nerd-svg-icons-icon-str (icon-name &rest args)
   (if (display-graphic-p)
