@@ -1204,6 +1204,13 @@ ARGS should be a plist containining `:face' or `:scale'."
 
 ;; Overriding all-the-icons -------------------------------------------------- ;
 
+(declare-function all-the-icons-alltheicon "ext:all-the-icons")
+(declare-function all-the-icons-fileicon "ext:all-the-icons")
+(declare-function all-the-icons-octicon "ext:all-the-icons")
+(declare-function all-the-icons-material "ext:all-the-icons")
+(declare-function all-the-icons-faicon "ext:all-the-icons")
+(declare-function all-the-icons-wicon "ext:all-the-icons")
+
 ;;;###autoload
 (define-minor-mode nerd-svg-icons-override-mode
   "Override `all-the-icons' functions with `nerd-svg-icons` ones."
