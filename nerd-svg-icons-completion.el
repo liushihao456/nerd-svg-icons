@@ -89,7 +89,7 @@
   "Return the icon for the candidate CAND of completion category buffer."
   (concat
    (or
-    (nerd-svg-icons-icon-for-str cand)
+    (nerd-svg-icons-icon-for-str (if (bufferp cand) (buffer-name cand) cand))
     (nerd-svg-icons-icon-for-mode (buffer-local-value 'major-mode (get-buffer cand))))
    (make-string nerd-svg-icons-completion-icon-right-padding ?\s)))
 
